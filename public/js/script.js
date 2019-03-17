@@ -32,7 +32,7 @@ var state = [];
 var marker;
 
 
-// for (let index = 0; index < 50; index++) {
+// for (let index = 0; index < 130; index++) {
 for (let i = 1; i < 16; i++) {
   readfile('data/taxi-' + i + '.txt', marker)
 }

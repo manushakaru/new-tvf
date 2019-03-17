@@ -3,7 +3,7 @@ var fs = require('fs')
 var csv = require('fast-csv')
 
 //create database function 
-createdb = function(dbname){
+module.export.createdb = function(dbname){
     var con = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -18,7 +18,7 @@ createdb = function(dbname){
 
 }
 
-insert =  function(path,dbname,tbname){
+module.export.insert =  function(path,dbname,tbname){
     var promise = new Promise(function(resolve,reject){
     console.log('csv insertion happening')
     let stream = fs.createReadStream(path);
