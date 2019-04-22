@@ -1,0 +1,71 @@
+#map {
+	height: 100%;
+}
+
+h1 {
+	display: none;
+}
+
+html, body {
+	height: 100%;
+	margin: 0px;	
+}
+
+main {
+	height: 100%;
+}
+
+section {
+	height: 100%;
+}
+
+#basemaps-wrapper {
+	position: absolute;
+	top: 40px;
+	right: 45px;
+	z-index: 400;
+	background-color: rgba(252, 255, 66, 0.26);
+	padding: 10px;
+  }
+
+#basemaps {
+	margin-bottom: 0px;
+	background-color: rgba(252, 255, 66, 0.26);
+	font-size: inherit;
+    font-weight: 600;
+}
+
+.colorsetting{
+	position: absolute;
+	top: 95px;
+	padding-bottom: 3px;
+    padding-top: 6px;
+	right: 45px;
+	width: 154px;
+	background-color: rgba(252, 255, 66, 0.26);
+}
+.icon{
+	color: #050505;
+	background-color: rgba(252, 255, 66, 0.26);
+	width: 89px;
+    margin-block-start: -26px;
+    margin-block-end: 4px;
+    margin-inline-start: 47px;
+    padding-left: 7px;
+    padding-top: 3px;
+	padding-bottom: 3px;
+	font-size: inherit;
+    font-weight: 600;
+}
+
+.icon-img{
+	margin-inline-start: 10px;
+	margin-block-start: 4px;
+	margin-block-end: 4px;
+	width: 16px;
+}
+
+#myDiv {
+	display: none;
+	/* text-align: center; */
+  }
