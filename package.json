@@ -1,24 +1,17 @@
 {
-  "name": "leaflet.movingmarker",
+  "name": "taxi_visualizer",
   "version": "1.0.0",
-  "description": "Leaflet.MovingMarker\r ====================\r ----------",
-  "main": "MovingMarker.js",
+  "description": "",
+  "main": "server.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ewoken/Leaflet.MovingMarker.git"
-  },
+
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ewoken/Leaflet.MovingMarker/issues"
-  },
-  "homepage": "https://github.com/ewoken/Leaflet.MovingMarker#readme",
   "dependencies": {
     "express": "^4.16.4",
     "express-fileupload": "^1.1.4",

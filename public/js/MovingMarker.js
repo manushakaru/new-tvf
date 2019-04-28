@@ -21,8 +21,8 @@ L.Marker.MovingMarker = L.Marker.extend({
         loop: false,
     },
 
-    initialize: function (latlngs, durations, options) {
-        L.Marker.prototype.initialize.call(this, latlngs[0], options);
+    initialize: function (latlngs, durations,passengers, options) {
+        L.Marker.prototype.initialize.call(this, latlngs[0],options);
 
         this._latlngs = latlngs.map(function(e, index) {
             return L.latLng(e);
@@ -33,9 +33,13 @@ L.Marker.MovingMarker = L.Marker.extend({
         } else {
             this._durations = this._createDurations(this._latlngs, durations);
         }
+        if (passengers instanceof Array) {
+            this._stateColor = passengers;
+        }
 
         this._currentDuration = 0;
         this._currentIndex = 0;
+        this._currentColor = 0;
 
         this._state = L.Marker.MovingMarker.notStartedState;
         this._startTime = 0;
@@ -45,6 +49,8 @@ L.Marker.MovingMarker = L.Marker.extend({
         this._animRequested = false;
         this._currentLine = [];
         this._stations = {};
+       
+        //console.log(passengers)
     },
 
     isRunning: function() {
@@ -134,6 +140,7 @@ L.Marker.MovingMarker = L.Marker.extend({
             return;
         }
         this._stations[pointIndex] = duration;
+        // this._stateColor[pointIndex] = duration;
     },
 
     onAdd: function (map) {
@@ -211,6 +218,7 @@ L.Marker.MovingMarker = L.Marker.extend({
     _loadLine: function(index) {
         this._currentIndex = index;
         this._currentDuration = this._durations[index];
+        this._currentColor = this._stateColor[index];
         this._currentLine = this._latlngs.slice(index, index + 2);
     },
 
@@ -228,6 +236,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         if (elapsedTime <= this._currentDuration) {
             return elapsedTime;
         }
+
 
         var lineIndex = this._currentIndex;
         var lineDuration = this._currentDuration;
@@ -272,6 +281,8 @@ L.Marker.MovingMarker = L.Marker.extend({
         return elapsedTime;
     },
 
+    
+
     _animate: function(timestamp, noRequestAnim) {
         this._animRequested = false;
 
@@ -289,7 +300,21 @@ L.Marker.MovingMarker = L.Marker.extend({
                 this._currentLine[1],
                 this._currentDuration,
                 elapsedTime);
-            this.setLatLng(p);
+
+            
+            if(this._currentColor == 0){
+                this.setLatLng(p).setIcon(yellowIcon1);
+        
+            }else if(this._currentColor == 1){
+                this.setLatLng(p).setIcon(redIcon1);
+      
+            }else if(this._currentColor == 2){
+                this.setLatLng(p).setIcon(pinkIcon);
+               
+            }else{
+                this.setLatLng(p).setIcon(orangeIcon);
+            }
+            // this.setLatLng(p).setIcon(yellowIcon1);
         }
 
         if (! noRequestAnim) {
@@ -299,6 +324,6 @@ L.Marker.MovingMarker = L.Marker.extend({
     }
 });
 
-L.Marker.movingMarker = function (latlngs, duration, options) {
-    return new L.Marker.MovingMarker(latlngs, duration, options);
+L.Marker.movingMarker = function (latlngs, duration,passengers, options) {
+    return new L.Marker.MovingMarker(latlngs, duration,passengers, options);
 };

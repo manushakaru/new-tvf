@@ -56,18 +56,18 @@ jQuery.get(filepath,function(txt){
     //console.log(latlon)
     markerXX = L.Marker.movingMarker(
       latlon,
-      288000, {autostart: false}).setIcon(redIcon1).setOpacity(0.5).addTo(map);
+      288000,passenger, {autostart: true}).addTo(map);
       markerarray.push(markerXX)
-      changeIcon(passenger ,markerXX);
+      // changeIcon(passenger ,markerXX);
 
   })
 }
-console.log(markerarray)
+// console.log(markerarray)
 
 function zoomchange(marker) {
   marker.setIcon(yellowIconbig)
 }
-console.log(latlon)
+// console.log(latlon)
 
 function changeIcon(passenger,markerXX){
   for (let index = 0; index < passenger.length; index++) {
@@ -82,7 +82,7 @@ function changeIcon(passenger,markerXX){
     }else{
       markerXX.setIcon(redIcon1)
     }
-  },(288000/(state.length)));
+  },(288000));
   }
 }
 
