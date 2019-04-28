@@ -28,65 +28,31 @@ var passenger = [];
 var state = [];
 
 
-var marker6,marker7;
-// for (let j = 0; j < 10; j++) {
-//   console.log(j)
-  
+var marker;
 
+  
 for (let i = 1; i <16;i++){
-  readfile('data/taxi-'+i+'.txt',marker6)
+  readfile('data/taxi-'+i+'.txt',marker)
 }
 
-// }
-// readfile('data/taxi-1.txt',marker6)
-// readfile('data/taxi-2.txt',marker7)
-//read file 
+
 var markerarray =[];
 function readfile(filepath , markerXX){
 jQuery.get(filepath,function(txt){
      var  data = txt.split('\n');
     for (let index = 0; index < data.length; index++) {
-        var arr = data[index].split(',')
-        //console.log(arr)
-       latlon[index] = [parseFloat(arr[0]),parseFloat(arr[1])] ;
-       passenger.push(parseInt(arr[2])) ;
-       state.push(parseInt(arr[3])) ;
+      var arr = data[index].split(',')
+      latlon[index] = [parseFloat(arr[0]),parseFloat(arr[1])] ;
+      passenger.push(parseInt(arr[2])) ;
+      state.push(parseInt(arr[3])) ;
         
     }
-    //console.log(latlon)
-    markerXX = L.Marker.movingMarker(
-      latlon,
-      288000,passenger, {autostart: true}).addTo(map);
-      markerarray.push(markerXX)
+    markerXX = L.Marker.movingMarker( latlon,288000,passenger, {autostart: true}).setOpacity(0.5).addTo(map);
+    markerarray.push(markerXX)
       // changeIcon(passenger ,markerXX);
 
   })
 }
-// console.log(markerarray)
-
-function zoomchange(marker) {
-  marker.setIcon(yellowIconbig)
-}
-// console.log(latlon)
-
-function changeIcon(passenger,markerXX){
-  for (let index = 0; index < passenger.length; index++) {
-    setTimeout(() => {
-    if(passenger[index] == 0){
-      markerXX.setIcon(yellowIcon1)
-      
-    }else if(passenger[index] == 1){
-      markerXX.setIcon(pinkIcon)
-    }else if(passenger[index] == 2){
-      markerXX.setIcon(orangeIcon)
-    }else{
-      markerXX.setIcon(redIcon1)
-    }
-  },(288000));
-  }
-}
-
-
 
 
 // var currentzoom = map.getZoom();
@@ -323,24 +289,15 @@ function changeBasemap(basemaps){
 		  // adjust the icon anchor to the new size
 		  var newIconAnchor = new L.Point(newIconSize.x, newIconSize.y);
 
-		  // finally, declare a new icon and update the marker
-		  // var newIcon = new L.Icon({
-      //   iconUrl: 'img/yellow1.png',
-      //   shadowUrl: 'img/shadow.png',
-		  //   iconSize: newIconSize,
-		  //   iconAnchor: newIconAnchor,
-		  //   shadowSize: newShadowSize,
-		  // });
       for (let index = 0; index < markerarray.length; index++) {
-        //select the icon
-        var newIcon = markerarray[index].options.icon;
+        
+        var newIcon = markerarray[index].options.icon;//select the icon
         // change icon options
         newIcon.options.iconSize = newIconSize;
         newIcon.options.iconAnchor = newIconAnchor;
         newIcon.options.shadowSize = newShadowSize;
-        //set marker with new icon
-        markerarray[index].setIcon(newIcon);
-        // console.log(markerarray[index].options.icon.options.iconSize)
+        markerarray[index].setIcon(newIcon); //set marker with new icon
+       
       }
 		  
 		}
