@@ -6,9 +6,20 @@
     margin-inline-start: 194px;
 }
 
+body{
+  margin: 0px;
+  padding: 0;
+  height: 100vh;
+}
+
+#particles-js{
+  height: 100%;
+  background:black;
+}
 .csvinp{
     margin-left: 200px;
 }
+
 
 .csvbtn{
     margin-block-start: 20px;
@@ -22,7 +33,7 @@
 
 .jumbotron h1{
     text-align: -webkit-center;
-    color: #ffd707;
+    color: #ff921f;
     
 }
 
@@ -37,17 +48,22 @@ input{
 }
 
 .jumbotron{
-    background-color: rgba(252, 255, 66, 0.26);
+   margin-top: 0;
+   /* height: 100%; */
+    background-color:  rgba(66, 255, 218, 0.38);
 }
 
 
-html,body {
-    background: url("../img/background_img.png") no-repeat center center fixed;
-    -webkit-background-size: cover; /* For WebKit*/
-    -moz-background-size: cover;    /* Mozilla*/
-    -o-background-size: cover;      /* Opera*/
-    background-size: cover;         /* Generic*/
-}
+
+/* html,body { */
+    /* width: 100%;
+    height: 100%; */
+    /* background: url("../img/background_img.png") no-repeat center center fixed; */
+    /* -webkit-background-size: cover; For WebKit */
+    /* -moz-background-size: cover;    Mozilla */
+    /* -o-background-size: cover;      Opera */
+    /* background-size: cover;         Generic */
+/* } */
 
 
 /* Center the loader */
@@ -221,3 +237,4 @@ html,body {
   -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
   transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
 }
+

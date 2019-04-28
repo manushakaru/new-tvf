@@ -4,101 +4,114 @@
 
 <head>
     <title> Taxi Visualizer </title>
-
-    <!-- META INFORMATION -->
-
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
     <meta name="description" content="Leaflet plugin to animate marker !">
     <meta name="keywords" content="Leaflet MovingMarker marker ewoken github animation">
     <meta name="author" content="Ewoken">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" />
-      
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
 </head>
 
-
-
-<body  >
-
-   
-    <main>
-        
-        <!-- <img id = 'loader'src="img/output.svg"> -->
-
-        <!-- <div id="myDiv"> -->
+<body  onload="play()">
         <section>
             <div id="map">
             </div>
         </section>
 
+        
         <div id="basemaps-wrapper" class="leaflet-bar">
             <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
               <option value="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png">dark_all</option>
               <option value="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png">light_all</option>
               <option value="http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png">light_nolabels</option>
               <option value="http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png">dark_nolabels</option>
+              <option value="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png">voyager_labels_under</option>
               <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-antique/{z}/{x}/{y}.png">base-antique</option>
               <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png">base-eco</option>
               <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-flatblue/{z}/{x}/{y}.png">base-flatblue</option>
               <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png">base-midnight</option>
             </select>
           </div>
-
-         
-          <!-- icon's deffenitions -->
-          <div class="colorsetting ">
-              <button type="button" onclick="toggleLegend();" >My button</button>
-              <div class=" legend">
-                  <img src="img/yellow-circle.png" class="icon-img" >
-                <p class="icon">Empty trip</p>
-                  
-                <img src="img/red-circle.png" class="icon-img">
-                <p class="icon">Full trip</p>
-
-                
-      
-              </div>
-              
-                
-          <!-- </div> -->
-        </div>
         
-    </main>
+        <div style="display:none" id = 'testlegend'class="boxy row">
+            <div class=" legend">
+              <img src="img/yellow-circle.png" class="icon-img" >
+              <p class="icon" id= '1'>Empty trip</p>
+              <img src="img/red-circle.png" class="icon-img">
+              <p class="icon" id= '2'>Full trip</p>
+          </div>
+        </div>
+  
+         <!-- <div class="areaChartBox">
+            <div class="box"><div id="slider-fill"></div></div>
+          </div> -->
+          <div id="vis" >
+              <!-- <button id="play-button" >Play</button> -->
+            </div>
+
     <script
 			  src="https://code.jquery.com/jquery-3.4.0.min.js"
 			  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
               crossorigin="anonymous">
     </script>
-		
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script type="text/javascript" src="js/MovingMarker.js"></script>
+
     <!-- <script type="text/javascript" src="js/taxidata.js"></script> -->
-    <script type="text/javascript" src="js/script.js"></script>
+    
 
     <script type="text/javascript" src="js/leaflet-color-markers.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/timeslider.js"></script>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/blitzer/theme.css"></script> -->
+    <script>
+      
+   $(document).ready(function(){
+    
+      $('.domcontainer').tooltip({
+      track:true,
+      show: {delay:100, duration:500, effect:'slideDown'},
+      hide: {delay:100, duration:500, effect:'slideUp'},
+      animation:true
+ 
+    })
+    $('.domcontainer').on('click',function(){
+      $('#testlegend').slideToggle()
+      
+    })
+    $('#1').on('click',function(){
+        alert('done')
+      })
+   })
+    
+ 
+    </script>
 
-    <!-- <script>
-        var myVar;
-        
-        function myFunction() {
-          myVar = setTimeout(showPage, 1000);
-        }
-        
-        function showPage() {
-          document.getElementById("loader").style.display = "none";
-          document.getElementById("map").style.display = 'block';
-        }
-        </script> -->
 
         <script>
         showLegend = true;  // default value showing the legend
-
+      //  $('.testlegend').hide(); 
 var toggleLegend = function(){
     if(showLegend === true){
     /* use jquery to select your DOM elements that has the class 'legend' */
@@ -110,6 +123,9 @@ var toggleLegend = function(){
     }
 }
         </script>
+
+
+
 </body>
 </body>
 </html>
