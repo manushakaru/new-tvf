@@ -42,8 +42,9 @@ app.post('/upload',function(req,res){
     
   }
   else {
-    res.send("No File selected !");
-    res.end();
+   // res.send("No File selected !");
+    //res.redirect(path.join(__dirname,'public/views','home.html'))
+   // res.end();
   };
 })
 //server starting

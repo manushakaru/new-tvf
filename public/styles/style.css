@@ -20,6 +20,12 @@ section {
 	height: 100%;
 }
 
+
+/* svg:not(:root) { */
+svg{
+	margin-inline-start: 115px;
+}
+
 #basemaps-wrapper {
 	position: absolute;
 	top: 40px;
@@ -48,7 +54,7 @@ section {
 .icon{
 	color: #050505;
 	background-color: rgba(252, 255, 66, 0.26);
-	width: 89px;
+	width: 100px;
     margin-block-start: -26px;
     margin-block-end: 4px;
     margin-inline-start: 47px;
@@ -129,13 +135,13 @@ display: none;
 	  left: 0px;
 	  /* padding-inline-start: 35%; */
 	  width: auto;
-	height: 134px;
+		height: 103px;
   
 	  
 		  }
-		  /* #play-button {
+		  #play-button {
 			position: absolute;
-			top: 89px;
+			top: 27px;
 	  left: 43px;
 			background: #f08080;
 			padding-right: 26px;
@@ -147,11 +153,11 @@ display: none;
 			width: 60px;
 			cursor: pointer;
 			height: 30px;
-		  } */
+		  }
 	  
-		  /* #play-button:hover {
+		  #play-button:hover {
 			background-color: #696969;
-		  }     */
+		  }    
 		  
 		  .ticks {
 			position: absolute;

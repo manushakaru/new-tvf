@@ -303,16 +303,19 @@ L.Marker.MovingMarker = L.Marker.extend({
 
             
             if(this._currentColor == 0){
-                this.setLatLng(p).setIcon(yellowIcon1);
+                this.setLatLng(p).setIcon(blueIcon);
         
             }else if(this._currentColor == 1){
-                this.setLatLng(p).setIcon(redIcon1);
+                this.setLatLng(p).setIcon(greenIcon);
       
             }else if(this._currentColor == 2){
-                this.setLatLng(p).setIcon(pinkIcon);
+                this.setLatLng(p).setIcon(yellowIcon);
                
-            }else{
-                this.setLatLng(p).setIcon(orangeIcon);
+            }else if(this._currentColor == 3){
+                this.setLatLng(p).setIcon(glossygreenIcon);
+            }
+            else{
+                this.setLatLng(p).setIcon(redIcon);
             }
             // this.setLatLng(p).setIcon(yellowIcon1);
         }

@@ -1,6 +1,6 @@
 // initialize the map on the "map" div with a given center and zoom
 var map = new L.Map('map', {
-  zoom: 12,
+  zoom: 13,
   minZoom: 12,
 });
 
@@ -30,10 +30,13 @@ var state = [];
 
 var marker;
 
+// for (let index = 0; index < 50; index++) {
+  for (let i = 1; i <16;i++){
+    readfile('data/taxi-'+i+'.txt',marker)
+  }
   
-for (let i = 1; i <16;i++){
-  readfile('data/taxi-'+i+'.txt',marker)
-}
+// }
+
 
 
 var markerarray =[];
@@ -47,12 +50,14 @@ jQuery.get(filepath,function(txt){
       state.push(parseInt(arr[3])) ;
         
     }
-    markerXX = L.Marker.movingMarker( latlon,288000,passenger, {autostart: true}).setOpacity(0.5).addTo(map);
+    markerXX = L.Marker.movingMarker( latlon,300000,passenger, {autostart: false}).setIcon(blueIcon).setOpacity(0.5).addTo(map);
     markerarray.push(markerXX)
+    // L.polyline(latlon).addTo(map);
       // changeIcon(passenger ,markerXX);
 
   })
 }
+
 
 
 // var currentzoom = map.getZoom();
@@ -180,30 +185,14 @@ jQuery.get(filepath,function(txt){
 
 // var marker4 = L.Marker.movingMarker([[45.816667, 15.983333]], []).addTo(map);
 
-// marker3.on('loop', function(e) {
-//     marker3.loops++;
-//     if (e.elapsedTime < 50) {
-//         marker3.getPopup().setContent("<b>Loop: " + marker3.loops + "</b>")
-//         marker3.openPopup();
-//         setTimeout(function() {
-//             marker3.closePopup();
-
-//             if (! marker1.isEnded()) {
-//                 marker1.openPopup();
-//             } else {
-//                 if (marker4.getLatLng().equals([45.816667, 15.983333])) {
-//                     marker4.bindPopup('Click on the map to move me !');
-//                     marker4.openPopup();
-//                 }
-
-//             }
-
-//         }, 2000);
-//     }
-// });
+// if(marker4.getLatLng().equals([45.816667, 15.983333])) {
+//   marker4.bindPopup('Click on the map to move me !');
+//   marker4.openPopup();
+// }
 
 // map.on("click", function(e) {
-//     marker4.moveTo(e.latlng, 2000);
+//   console.log(e.latlng)
+//     marker4.moveTo(e.latln, 2000);
 // });
 
 //=========================================================================
@@ -261,6 +250,7 @@ function changeBasemap(basemaps){
       container.style.height = '30px';
       container.title = 'Legend';
       container.style.cursor = 'pointer';
+      container.tileUrl ="url(img/icons8-map-marker-64.png)";
       
   
       return container;
@@ -288,7 +278,7 @@ function changeBasemap(basemaps){
 
 		  // adjust the icon anchor to the new size
 		  var newIconAnchor = new L.Point(newIconSize.x, newIconSize.y);
-
+      console.log(markerarray.length)
       for (let index = 0; index < markerarray.length; index++) {
         
         var newIcon = markerarray[index].options.icon;//select the icon
@@ -311,7 +301,81 @@ function changeBasemap(basemaps){
 		  else if (zoom == 13) return 1.0;
 		  else if (zoom == 14) return 1.3;
 		  else if (zoom == 15) return 1.6;
-		  else if (zoom == 16) return 1.9;
+		  else if (zoom == 16) return 2.5;
 		  else // zoom >= 17
-		  return 2.2;
-		}
+		  return 3.5;
+    }
+    
+$(function(){
+
+
+    L.control.custom({
+      position: 'topright',
+      content : '<button type="button" class="btn btn-default">'+
+                '    <a id ="testa" ><i class="fas fa-camera"></i></a>'+
+                '</button>' //+
+                // '<button type="button" class="btn btn-info">'+
+                // '    <i class="fa fa-compass"></i>'+
+                // '</button>'+
+                // '<button type="button" class="btn btn-primary">'+
+                // '    <i class="fa fa-spinner fa-pulse fa-fw"></i>'+
+                // '</button>'+
+                // '<button type="button" class="btn btn-danger">'+
+                // '    <i class="fa fa-times"></i>'+
+                // '</button>'+
+                // '<button type="button" class="btn btn-success">'+
+                // '    <i class="fa fa-check"></i>'+
+                // '</button>'+
+                // '<button type="button" class="btn btn-warning">'+
+                // '    <i class="fa fa-exclamation-triangle"></i>'+
+                // '</button>'
+                ,
+      classes : 'btn-group-vertical btn-group-sm',
+      style   :
+      {
+          margin: '10px',
+          padding: '0px 0 0 0',
+          cursor: 'pointer',
+      },
+      datas   :
+      {
+          'foo': 'bar',
+      },
+      events:
+      {
+          click: function(data)
+          {
+              console.log('wrapper div element clicked');
+              console.log(data);
+              var link = document.getElementById('testa');
+   
+              // link.addEventListener('click', function(ev) {
+                  //link.innerHTML = 'download image';
+                  html2canvas(document.getElementById('sec')).then(function(canvas) {
+                 // var img = canvas.toDataURL()
+                  
+                  link.href = canvas.toDataURL();
+                  link.download = "example.png";
+                  console.log(link.download)
+                 // document.getElementById('screenshot_div').appendChild(canvas);
+              });
+              // }, false);
+          },
+          dblclick: function(data)
+          {
+              console.log('wrapper div element dblclicked');
+              console.log(data);
+          },
+          contextmenu: function(data)
+          {
+              console.log('wrapper div element contextmenu');
+              console.log(data);
+          },
+      }
+  })
+  .addTo(map);
+})
+
+console.log(map.getCenter().toString())
+
+console.log(map._layers)
