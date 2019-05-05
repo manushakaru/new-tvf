@@ -250,6 +250,7 @@ function changeBasemap(basemaps){
       container.style.height = '30px';
       container.title = 'Legend';
       container.style.cursor = 'pointer';
+      container.id = 'legened_container';
       container.tileUrl ="url(img/icons8-map-marker-64.png)";
       
   
