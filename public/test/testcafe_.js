@@ -17,6 +17,7 @@ const cityOption = citySelect.find('option');
 test(`test file upload, button cicks `, async t => {
     await t
     //testing for file uploading
+    //testing file location can be changed 
     .setFilesToUpload( `#filetoupload`, `F:/moving marker/Leaflet.MovingMarker/public/data/taxi-16.txt` )
     .wait(1000)
     //button click event for begin button - redirect to http://localhost:8080/upload

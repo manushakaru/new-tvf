@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "manusha karunathilaka",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
     "express-fileupload": "^1.1.4",
+    "html2canvas": "^1.0.0-rc.1",
     "multer": "^1.4.1",
     "path": "^0.12.7"
   },

@@ -245,8 +245,8 @@ function changeBasemap(basemaps){
   
       container.style.backgroundColor = 'white';     
       container.style.backgroundImage = "url(img/icons8-map-marker-64.png)";
-      container.style.backgroundSize = "30px 30px";
-      container.style.width = '30px';
+      container.style.backgroundSize = "35px 31px";
+      container.style.width = '35px';
       container.style.height = '30px';
       container.title = 'Legend';
       container.style.cursor = 'pointer';
@@ -311,72 +311,74 @@ $(function(){
 
 
     L.control.custom({
-      position: 'topright',
-      content : '<button type="button" class="btn btn-default">'+
-                '    <a id ="testa" ><i class="fas fa-camera"></i></a>'+
-                '</button>' //+
-                // '<button type="button" class="btn btn-info">'+
-                // '    <i class="fa fa-compass"></i>'+
-                // '</button>'+
-                // '<button type="button" class="btn btn-primary">'+
-                // '    <i class="fa fa-spinner fa-pulse fa-fw"></i>'+
-                // '</button>'+
-                // '<button type="button" class="btn btn-danger">'+
-                // '    <i class="fa fa-times"></i>'+
-                // '</button>'+
-                // '<button type="button" class="btn btn-success">'+
-                // '    <i class="fa fa-check"></i>'+
-                // '</button>'+
-                // '<button type="button" class="btn btn-warning">'+
-                // '    <i class="fa fa-exclamation-triangle"></i>'+
-                // '</button>'
+      position: 'topleft',
+      content : '<button type="button" class="btn btn-default btn_camera">'+
+                '    <a id ="take_screenshot" ><i class="fa fa-camera"></i></a>'+
+                '</button>'
                 ,
-      classes : 'btn-group-vertical btn-group-sm',
+      classes : 'btn-group-vertical btn-group-sm ',
+      title: 'screendhot',
       style   :
       {
-          margin: '10px',
+        
+          margin: '10px 100',
           padding: '0px 0 0 0',
           cursor: 'pointer',
       },
-      datas   :
-      {
-          'foo': 'bar',
-      },
       events:
       {
-          click: function(data)
+          click: function()
           {
               console.log('wrapper div element clicked');
-              console.log(data);
-              var link = document.getElementById('testa');
+              // console.log(data);
+              var link = document.getElementById('take_screenshot');
+              // if (window.chrome) { // Fix for Chrome
+              //   console.log($(".gm-style>div:first"))
+              //   var transform = $(".gm-style>div:first").css("transform");
+              //   console.log(transform)
+              //   var comp = transform.split(","); //split up the transform matrix
+              //   var mapleft = parseFloat(comp[4]); //get left value
+              //   var maptop = parseFloat(comp[5]); //get top value
+              //   $(".gm-style>div:first").css({ //get the map container. not sure if stable
+              //     "transform": "none",
+              //     "left": mapleft,
+              //     "top": maptop,
+              //   });
+              // }
    
               // link.addEventListener('click', function(ev) {
                   //link.innerHTML = 'download image';
-                  html2canvas(document.getElementById('sec')).then(function(canvas) {
+                  html2canvas(document.querySelector('#map')
+                 ).then(function(canvas) {
                  // var img = canvas.toDataURL()
-                  
+                //  document.getElementById('screenshot_div').appendChild(canvas);
+                //  document.getElementById("screenshot_div").style.display = "block";
                   link.href = canvas.toDataURL();
                   link.download = "example.png";
                   console.log(link.download)
-                 // document.getElementById('screenshot_div').appendChild(canvas);
+                  // canvas.style.width = '100px'
+                  // canvas.style.height = '100px'
+                 
+                
+
               });
               // }, false);
           },
-          dblclick: function(data)
+          dblclick: function()
           {
               console.log('wrapper div element dblclicked');
-              console.log(data);
+              // console.log(data);
           },
-          contextmenu: function(data)
+          contextmenu: function()
           {
               console.log('wrapper div element contextmenu');
-              console.log(data);
+              // console.log(data);
           },
       }
   })
   .addTo(map);
 })
 
-console.log(map.getCenter().toString())
+// console.log(map.getCenter().toString())
 
-console.log(map._layers)
+// console.log(map._layers)

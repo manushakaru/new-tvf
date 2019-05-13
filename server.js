@@ -18,24 +18,44 @@ app.post('/upload',function(req,res){
   
   // console.log(req.files.foo);
   if(req.files){
-    
-    var file = req.files.upfile,
-      name = file.name,
-      type = file.mimetype;
-    var uploadpath = __dirname + '/public/data/' + name;
-    // if(type == 'application/vnd.ms-excel'){
-      file.mv(uploadpath,function(err){
-        if(err){
-          console.log("File Upload Failed",name,err);
-          res.send("Error Occured!")
-        }
-        else {
-          console.log("File Uploaded",name);
-          //var textByLine = fs.readFileSync(uploadpath).toString().split("\n");
-        //console.log(textByLine)
+    console.log(req.files)
+    console.log((req.files.upfile).length)
+    var file = req.files.upfile
+      // name = file.name,
+      // type = file.mimetype;
+      var promise_file_upload = new Promise(function (resolve,reject) {
+        var loopnum = 0 ;
+        for (let index = 0; index <file.length; index++) {
+          var  file_= file[index]
+          var name = file_.name;
+        
+        
+      var uploadpath = __dirname + '/public/data/' + name;
+      // if(type == 'application/vnd.ms-excel'){
+        file_.mv(uploadpath,function(err){
+          if(err){
+            console.log("File Upload Failed",name,err);
+            res.send("Error Occured!")
+          }
+          else {
+            console.log("File Uploaded",name);
+            //var textByLine = fs.readFileSync(uploadpath).toString().split("\n");
+          //console.log(textByLine)
+            
+          }
+        });
+        loopnum +=1
+      }
+      if(loopnum == file.length){
+        resolve(true)
+      }
+      })
+      promise_file_upload.then(function(val){
+        if(val){
           res.sendFile(path.join(__dirname,'public/views','index.html'))
         }
-      });
+      })
+   
     // }else{
     //   res.send('file type is wrong')
     // }
