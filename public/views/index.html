@@ -3,104 +3,122 @@
 <html>
 
 <head>
-    <title> Taxi Visualizer </title>
-    <meta charset="UTF-8">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Leaflet plugin to animate marker !">
-    <meta name="keywords" content="Leaflet MovingMarker marker ewoken github animation">
-    <meta name="author" content="Ewoken">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <title> Taxi Visualizer </title>
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="content-type" content="text/html; charset=UTF-8"> -->
+  <!-- <meta name="description" content="Leaflet plugin to animate marker !"> -->
+  <!-- <meta name="keywords" content="Leaflet MovingMarker marker ewoken github animation"> -->
+  <!-- <meta name="author" content="Ewoken"> -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" />
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- font-awsome library -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://unpkg.com/d3-simple-slider"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-     <!-- linkfor qunit.css -->
-     <!-- <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">  -->
+  <!-- jQuery library -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <!-- font-awsome library -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Latest compiled JavaScript -->
  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <!-- <script src="https://unpkg.com/d3-simple-slider"></script> -->
+  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+  <!-- linkfor qunit.css -->
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">  -->
+
 </head>
-<body >
-        <!-- <section id = 'sec'> -->
-            <div id="map">
-            </div>
-        <!-- </section> -->
 
-        
-        <div id="basemaps-wrapper" class="leaflet-bar">
-            <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
-              <option value="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png">dark_all</option>
-              <option value="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png">light_all</option>
-              <option value="http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png">light_nolabels</option>
-              <option value="http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png">dark_nolabels</option>
-              <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-antique/{z}/{x}/{y}.png">base-antique</option>
-              <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png">base-eco</option>
-              <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-flatblue/{z}/{x}/{y}.png">base-flatblue</option>
-              <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png">base-midnight</option>
-            </select>
-          </div>
-        
-        <div style="display:none" id = 'testlegend'class="boxy row">
-            <div class=" legend">
-              <img src="img/1024px-Light_Blue_Circle.svg.png" class="icon-img" >
-              <p class="icon" id= '1'>0 passengers</p>
-              <img src="img/79-796559_green-fake-bullet-green-circle-transparent-png.png" class="icon-img" >
-              <p class="icon" id= '1'>1 passengers</p>
-              <img src="img/yellow.png" class="icon-img" >
-              <p class="icon" id= '1'>2 passengers</p>
-              <img src="img/glossy-green.png" class="icon-img" >
-              <p class="icon" id= '1'>3 passengers</p>
-              <img src="img/red.png" class="icon-img" >
-              <p class="icon" id= '1'>4 passengers</p>
-          </div>
-        </div>
-
-        <div id="screenshot_div" style="display:none " class="screenimage">
+<body>
+  <!-- <section id = 'sec'> -->
+  <div id="map">
+  </div>
+  <!-- </section> -->
 
 
-        </div>
+  <div id="basemaps-wrapper" class="leaflet-bar">
+    <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
+      <option value="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png">dark_all</option>
+      <option value="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png">light_all</option>
+      <option value="http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png">light_nolabels</option>
+      <option value="http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png">dark_nolabels</option>
+      <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-antique/{z}/{x}/{y}.png">base-antique</option>
+      <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png">base-eco</option>
+      <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-flatblue/{z}/{x}/{y}.png">base-flatblue</option>
+      <option value="https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png">base-midnight</option>
+    </select>
+  </div>
 
-          <div id="vis" >
-            <!-- for testing -->
-              <!-- <div class="test">
+  <div style="display:none" id='testlegend' class="boxy row">
+    <div class=" legend">
+      <img src="img/1024px-Light_Blue_Circle.svg.png" class="icon-img">
+      <p class="icon" id='1'>0 passengers</p>
+      <img src="img/79-796559_green-fake-bullet-green-circle-transparent-png.png" class="icon-img">
+      <p class="icon" id='1'>1 passengers</p>
+      <img src="img/yellow.png" class="icon-img">
+      <p class="icon" id='1'>2 passengers</p>
+      <img src="img/glossy-green.png" class="icon-img">
+      <p class="icon" id='1'>3 passengers</p>
+      <img src="img/red.png" class="icon-img">
+      <p class="icon" id='1'>4 passengers</p>
+    </div>
+  </div>
+
+  <!-- <div id="screenshot_div"  class="screenimage">
+      <button class="btn_download"><i class="fa fa-download"></i> Download</button>
+  </div> -->
+
+  <!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content" id = 'screenshot_div'>
+      <span class="close close_">&times;</span>
+      <!-- <p>Some text in the Modal..</p> -->
+      <!-- <div id="screenshot_div"  class="screenimage"> -->
+          <button id= 'download' class="btn_download"><i class="fa fa-download"></i> Download</button>
+      <!-- </div> -->
+    </div>
+  
+  </div>
+
+  <div id="vis">
+    <!-- for testing -->
+    <!-- <div class="test">
                   <div id="qunit"></div>
                   <div id="qunit-fixture"></div>
                  </div> -->
-              <button id="play-button" >Play</button>
-            </div>
-             
-            
-             
+    <button id="play-button">Play</button>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <script type="text/javascript" src="js/MovingMarker.js"></script>
 
-    <!-- <script type="text/javascript" src="js/taxidata.js"></script> -->
-    <script type="text/javascript" src="js/timeslider.js"></script>
-    <script type="text/javascript" src="js/html2canvas.js"></script>
-    <script type="text/javascript" src="js/leaflet-color-markers.js"></script>
-    <script type="text/javascript" src="js/sliding.js"></script>
-    <script type="text/javascript" src="js/leaflet-custom-controler.js"></script>
-    <!-- <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script> -->
-    <!-- <script type="text/javascript" src="js/maptest.js"></script> -->
-    <script type="text/javascript" src="js/script.js"></script>
+ 
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="https://cdn-webgl.eegeo.com/eegeojs/api/v0.1.780/eegeo.js"></script>
+  <script type="text/javascript" src="js/MovingMarker.js"></script>
+
+  <!-- <script type="text/javascript" src="js/taxidata.js"></script> -->
+  <script type="text/javascript" src="js/timeslider.js"></script>
+  <script type="text/javascript" src="js/html2canvas.js"></script>
+  <script type="text/javascript" src="js/leaflet-color-markers.js"></script>
+  <script type="text/javascript" src="js/dom-to-image.min.js"></script>
+  <script type="text/javascript" src="js/leaflet-custom-controler.js"></script>
+  <!-- <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script> -->
+  <!-- <script type="text/javascript" src="js/maptest.js"></script> -->
+  <script type="text/javascript" src="js/script.js"></script>
 
 
 </body>
-</body>
+
+
 </html>

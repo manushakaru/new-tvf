@@ -1,26 +1,26 @@
-QUnit.begin(function( details ) {
-    console.log( "Test Suit Starting." );
-    });
+QUnit.begin(function (details) {
+  console.log("Test Suit Starting.");
+});
 
-QUnit.test( "file upload test", function(assert) {
+QUnit.test("file upload test", function (assert) {
 
-  assert.expect( 1 );
- 
-  var $body = $( "#filetoupload" );
- 
-  $body.on( "click", function() {
-    assert.ok( true, "file input field is clicked!");
+  assert.expect(1);
+
+  var $body = $("#filetoupload");
+
+  $body.on("click", function () {
+    assert.ok(true, "file input field is clicked!");
   });
- 
-  $body.trigger( "click" );
- 
-  });
+
+  $body.trigger("click");
+
+});
 
   //testing for begining btn
 // QUnit.test('begin button test',function(assert){
 //     assert.expect(1)
 //     var $btn = $('#begin')
-   
+
 //     $btn.on('click',function(){
 //         assert.ok(true,'button clicked')
 //     })

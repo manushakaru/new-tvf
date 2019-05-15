@@ -1,103 +1,103 @@
 //set date formats
 var formatDateIntoYear = d3.timeFormat("%H:%M");
-var formatDate = d3.timeFormat("%H:%M:%S");
+var formatDate         = d3.timeFormat("%H:%M:%S");
 
 var startDate = new Date("2019-04-21 00:00:00"),
-    endDate = new Date("2019-04-21 24:00:00");
+    endDate   = new Date("2019-04-21 24:00:00");
 
-var margin = {top:50, right:50, bottom:0, left:50},
-    width = 960 - margin.left - margin.right,
+var margin = { top: 50, right: 50, bottom: 0, left: 50 },
+    width  = 960 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
 var svg = d3.select("#vis")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height -100);  
+  .append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height - 100);
 
 ////////// slider //////////
 
-var moving = false;
+var moving       = false;
 var currentValue = 0;
-var targetValue = width;
+var targetValue  = width;
 
 var playButton = d3.select("#play-button");
-    
+
 var x = d3.scaleTime()
-    .domain([startDate, endDate])
-    .range([0, targetValue])
-    .clamp(true);
+  .domain([startDate, endDate])
+  .range([0, targetValue])
+  .clamp(true);
 
 var slider = svg.append("g")
-    .attr("class", "slider")
-    .attr("transform", "translate(" + margin.left + "," + height/5 + ")");
+  .attr("class", "slider")
+  .attr("transform", "translate(" + margin.left + "," + height / 5 + ")");
 
 slider.append("line")
-    .attr("class", "track")
-    .attr("x1", x.range()[0])
-    .attr("x2", x.range()[1])
-  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-    .attr("class", "track-inset")
-    
-  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-    .attr("class", "track-overlay")
+  .attr("class", "track")
+  .attr("x1", x.range()[0])
+  .attr("x2", x.range()[1])
+  .select(function () { return this.parentNode.appendChild(this.cloneNode(true)); })
+  .attr("class", "track-inset")
 
-    .call(d3.drag()
-        .on("start.interrupt", function() { slider.interrupt(); })
-        .on("start drag", function() {
-          currentValue = d3.event.x;
-          update(x.invert(currentValue)); 
-        })
-    );
+  .select(function () { return this.parentNode.appendChild(this.cloneNode(true)); })
+  .attr("class", "track-overlay")
+
+  .call(d3.drag()
+    .on("start.interrupt", function () { slider.interrupt(); })
+    .on("start drag", function () {
+      currentValue = d3.event.x;
+      update(x.invert(currentValue));
+    })
+  );
 
 slider.insert("g", ".track-overlay")
-    .attr("class", "ticks")
-    .attr("transform", "translate(0," + 18 + ")")
+  .attr("class", "ticks")
+  .attr("transform", "translate(0," + 18 + ")")
   .selectAll("text")
-    .data(x.ticks(23))
-    .enter()
-    .append("text")
-    .attr("x", x)
-    .attr("y", 10)
-    .attr("text-anchor", "middle")
-    .text(function(d) { return formatDateIntoYear(d); });
+  .data(x.ticks(23))
+  .enter()
+  .append("text")
+  .attr("x", x)
+  .attr("y", 10)
+  .attr("text-anchor", "middle")
+  .text(function (d) { return formatDateIntoYear(d); });
 
 var handle = slider.insert("circle", ".track-overlay")
-    .attr("class", "handle")
-    .attr("r", 9)
-    .style('fill', '#00CCCC');
+  .attr("class", "handle")
+  .attr("r", 9)
+  .style('fill', '#00CCCC');
 
-var label = slider.append("text")  
-    .style('color','blue')
-    .attr("class", "label")
-    .attr("text-anchor", "middle")
-    .text(formatDate(startDate))
-    .attr("transform", "translate(0," + (-25) + ")")
-    
+var label = slider.append("text")
+  .style('color', 'blue')
+  .attr("class", "label")
+  .attr("text-anchor", "middle")
+  .text(formatDate(startDate))
+  .attr("transform", "translate(0," + (-25) + ")")
 
-  
+
+
 ////////// plot //////////
 
-  function play(){
-    var button = d3.select(this);
-    if (button.text() == "Pause") {
-      moving = false;
-      clearInterval(timer);
-      // timer = 0;
-      button.text("Play");
-    } else {
-      moving = true;
-      timer = setInterval(step, 3);
-      button.text("Pause");
-    }
-    console.log("Slider moving: " + moving);
+function play() {
+  var button = d3.select(this);
+  if (button.text() == "Pause") {
+    moving = false;
+    clearInterval(timer);
+    // timer = 0;
+    button.text("Play");
+  } else {
+    moving = true;
+    timer  = setInterval(step, 3);
+    button.text("Pause");
   }
-  playButton
-    .on("click", function() {
+  console.log("Slider moving: " + moving);
+}
+playButton
+  .on("click", function () {
     var button = d3.select(this);
     if (button.text() == "Pause") {
       for (let index = 0; index < markerarray.length; index++) {
         markerarray[index].pause()
-        
+
       }
       moving = false;
       clearInterval(timer);
@@ -107,20 +107,20 @@ var label = slider.append("text")
       moving = true;
       for (let index = 0; index < markerarray.length; index++) {
         markerarray[index].start()
-        
+
       }
       timer = setInterval(step, 3);
-      
+
       button.text("Pause");
     }
     console.log("Slider moving: " + moving);
   })
-  
+
 function step() {
   update(x.invert(currentValue));
-  currentValue = currentValue + (targetValue/100000);
+  currentValue = currentValue + (targetValue / 100000);
   if (currentValue > targetValue) {
-    moving = false;
+    moving       = false;
     currentValue = 0;
     clearInterval(timer);
     // timer = 0;

@@ -1,222 +1,273 @@
 #map {
 	height: 100%;
 }
-canvas{
-	width: 100px;
+
+canvas {
+	width : 100px;
 	height: 100px;
 }
+
 h1 {
 	display: none;
 }
 
 html, body {
 	height: 100%;
-	margin: 0px;	
+	margin: 0px;
 }
 
 main {
 	height: 100%;
-	width:100%;
+	width : 100%;
 }
 
 section {
 	height: 100%;
 }
 
-
 /* svg:not(:root) { */
-svg{
+
+svg {
 	margin-inline-start: 115px;
 }
 
 #basemaps-wrapper {
-	position: absolute;
-	top: 40px;
-	right: 45px;
-	z-index: 400;
+	position        : absolute;
+	top             : 40px;
+	right           : 45px;
+	z-index         : 400;
 	background-color: rgba(0, 255, 170, 0.26);
-	padding: 10px;
-  }
+	padding         : 10px;
+}
 
 #basemaps {
-	margin-bottom: 0px;
+	margin-bottom   : 0px;
 	background-color: rgba(0, 255, 170, 0.26);
-	font-size: inherit;
-    font-weight: 600;
+	font-size       : inherit;
+	font-weight     : 600;
 }
 
-.colorsetting{
-	position: absolute;
-	top: 95px;
-	padding-bottom: 3px;
-    padding-top: 6px;
-	right: 45px;
-	width: 154px;
+.colorsetting {
+	position        : absolute;
+	top             : 95px;
+	padding-bottom  : 3px;
+	padding-top     : 6px;
+	right           : 45px;
+	width           : 154px;
 	background-color: rgba(252, 255, 66, 0.26);
-}
-.icon{
-	color: #050505;
-	background-color: rgba(252, 255, 66, 0.26);
-	width: 100px;
-    margin-block-start: -26px;
-    margin-block-end: 4px;
-    margin-inline-start: 47px;
-    padding-left: 7px;
-    padding-top: 3px;
-	padding-bottom: 3px;
-	font-size: inherit;
-    font-weight: 600;
 }
 
-.icon-img{
+.icon {
+	color              : #050505;
+	background-color   : rgba(252, 255, 66, 0.26);
+	width              : 100px;
+	margin-block-start : -26px;
+	margin-block-end   : 4px;
+	margin-inline-start: 47px;
+	padding-left       : 7px;
+	padding-top        : 3px;
+	padding-bottom     : 3px;
+	font-size          : inherit;
+	font-weight        : 600;
+}
+
+.icon-img {
 	margin-inline-start: 10px;
-	margin-block-start: 4px;
-	margin-block-end: 4px;
-	width: 16px;
+	margin-block-start : 4px;
+	margin-block-end   : 4px;
+	width              : 16px;
 }
 
 #myDiv {
 	display: none;
 	/* text-align: center; */
-  }
-
-	.boxy {
-    position: absolute;
-    top: 72px;
-    padding-bottom: 3px;
-    padding-top: 6px;
-    width: 156px;
-    background-color: #ffffff82;
-    left: 68px;
 }
-.screenimage{
+
+.boxy {
+	position        : absolute;
+	top             : 72px;
+	padding-bottom  : 3px;
+	padding-top     : 6px;
+	width           : 156px;
+	background-color: #ffffff82;
+	left            : 68px;
+}
+
+.screenimage {
 	position: absolute;
-    top: 100px;
-    padding-bottom: 3px;
-    padding-top: 6px;
-		width: 156px;
-		height: 156px;
-    background-color: hsla(0, 100%, 50%, 0.51);
-    left: 100px;
+	top: 100px;
+	padding: 15px;
+	width: 800px;
+	height: 400px;
+	background-color: hsla(0, 100%, 50%, 0.51);
+	left: 244px;
 }
 
-.screenimage canvas{
-	width: 100px;
-	height: 100px;
+.screenshotPNG{
+width: 100%;
+/* align-self: center; */
+height: 300px;
 }
+
 .legend {
-    line-height: 18px;
-    color: #555;
+	line-height: 18px;
+	color      : #555;
 }
+
 .legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.7;
+	width       : 18px;
+	height      : 18px;
+	float       : left;
+	margin-right: 8px;
+	opacity     : 0.7;
 }
 
 .areaChartBox {
 	position: absolute;
-	bottom: 1px;
-	right: 0px;
-	left: 0px;
-	/* padding-inline-start: 35%; */
-	width: auto;
-	height: 134px;
-	
+	bottom  : 1px;
+	right   : 0px;
+	left    : 0px;
+	width   : auto;
+	height  : 134px;
 }
 
-.ui-tooltip{
+.ui-tooltip {
 	background-color: whitesmoke;
-	box-sizing: content-box;
-	width: 5%;
-	padding: 5px; 
-	text-align: center;
-	}
-  div.testlegend {
-width: 50%;
-height: 100px;
-display: none;
+	box-sizing      : content-box;
+	width           : 5%;
+	padding         : 5px;
+	text-align      : center;
 }
 
- /* body {
-          font-family:"avenir next", Arial, sans-serif;
-          font-size: 12px;
-          color: #696969;
-        } */
-        #vis{
-			position: absolute;
-	  bottom: 1px;
-	  right: 0px;
-	  left: 0px;
-	  /* padding-inline-start: 35%; */
-	  width: auto;
-		height: 103px;
-  
-	  
-		  }
-		  #play-button {
-			position: absolute;
-			top: 27px;
-	  left: 43px;
-			background: #f08080;
-			padding-right: 26px;
-			border-radius: 3px;
-			border: none;
-			color: white;
-			margin: 0;
-			padding: 0 12px;
-			width: 60px;
-			cursor: pointer;
-			height: 30px;
-		  }
-	  
-		  #play-button:hover {
-			background-color: #696969;
-		  }    
-		  
-		  .ticks {
-			position: absolute;
-			font-size: 10px;
-		  
-		  }
-	  
-		  .track,
-		  .track-inset,
-		  .track-overlay {
-			position: absolute;
-			stroke-linecap: round;
-		  }
-	  
-		  .track {
-			position: absolute;
-			stroke: #000;
-			stroke-opacity: 0.3;
-			stroke-width: 10px;
-		  }
-	  
-		  .track-inset {
-			position: absolute;
-			stroke: #dcdcdc;
-			stroke-width: 8px;
-		  }
-	  
-		  .track-overlay {
-			position: absolute;
-			pointer-events: stroke;
-			stroke-width: 50px;
-			stroke: transparent;
-			cursor: crosshair;
-		  }
-	  
-		  .handle {
-			position: absolute;
-			fill: #fff;
-			stroke: #000;
-			stroke-opacity: 0.5;
-			stroke-width: 1.25px;
-		  }
-	/* .btn_camera{
-		margin-inline-start: 10px;
-	} */
+div.testlegend {
+	width  : 50%;
+	height : 100px;
+	display: none;
+}
+
+
+#vis {
+	position: absolute;
+	bottom  : 1px;
+	right   : 0px;
+	left    : 0px;
+	width   : auto;
+	height  : 103px;
+}
+
+#play-button {
+	position     : absolute;
+	top          : 27px;
+	left         : 43px;
+	background   : #f08080;
+	padding-right: 26px;
+	border-radius: 3px;
+	border       : none;
+	color        : white;
+	margin       : 0;
+	padding      : 0 12px;
+	width        : 60px;
+	cursor       : pointer;
+	height       : 30px;
+}
+
+#play-button:hover {
+	background-color: #696969;
+}
+
+.ticks {
+	position : absolute;
+	font-size: 10px;
+}
+
+.track, .track-inset, .track-overlay {
+	position      : absolute;
+	stroke-linecap: round;
+}
+
+.track {
+	position      : absolute;
+	stroke        : #000;
+	stroke-opacity: 0.3;
+	stroke-width  : 10px;
+}
+
+.track-inset {
+	position    : absolute;
+	stroke      : #dcdcdc;
+	stroke-width: 8px;
+}
+
+.track-overlay {
+	position      : absolute;
+	pointer-events: stroke;
+	stroke-width  : 50px;
+	stroke        : transparent;
+	cursor        : crosshair;
+}
+
+.handle {
+	position      : absolute;
+	fill          : #fff;
+	stroke        : #000;
+	stroke-opacity: 0.5;
+	stroke-width  : 1.25px;
+}
+
+
+
+.btn_download {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+	font-size: 20px;
+	width: 100%;
+	margin-block-start: 3%; 
+}
+
+/* Darker background on mouse-over */
+.btn_download:hover {
+  background-color: RoyalBlue;
+}
+
+
+/* ////////////////////////////////////////////////// */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 5% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close_ {
+  color: rgb(243, 2, 2);
+  float: right;
+  font-size: 28px;
+	font-weight: bold;
+	opacity: 0.6;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
