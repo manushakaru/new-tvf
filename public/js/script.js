@@ -351,83 +351,71 @@ $(function () {
       click: function () {
         // Get the modal
         var node = document.body;
+        var promise = new Promise(function(resolve,reeject){
+        setTimeout(() => {
+          var playButton = $("#play-button");
+          console.log(playButton.text())
+          if(playButton.text() == 'Pause'){
+            playButton.click();
+          }
+          resolve(true)
+        }, 1000);
+      }).then(function(val){
+              if(val){
+                domtoimage.toPng(node)
+                .then(function (dataUrl) {
 
-        domtoimage.toPng(node)
-          .then(function (dataUrl) {
-            var img = new Image();
-            img.style.width = '100%';
-            img.style.height = '80%';
-            img.id = 'scnimg';
+                  var img = new Image();
+                  img.style.width = '100%';
+                  img.style.height = '80%';
+                  img.id = 'scnimg';
+      
+                  img.className = 'screenshot';
+                  img.src = dataUrl;
 
-            img.className = 'screenshot';
-            img.src = dataUrl;
-            // var link = document.getElementById('downloadLink');
-            // link.download = 'my-image-name.png';
-            // link.href = dataUrl;
-            $('#screenshot_div>span:eq(0)').after(img);
-            var modal = document.getElementById("myModal");
-            var span = document.getElementsByClassName("close")[0];
-            var dwnbtn = document.getElementById('download');
-
-            modal.style.display = "block";
-
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-              modal.style.display = "none";
-              img.remove();
-            }
-            dwnbtn.onclick = function(){
-              var download = document.createElement('a');
-              download.href = img.src;
-              download.download = 'taxi_visualizer.png';
-              download.click();
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
-                img.remove();
+                  $('#screenshot_div>span:eq(0)').after(img);
+                  var modal = document.getElementById("myModal");
+                  var span = document.getElementsByClassName("close")[0];
+                  var dwnbtn = document.getElementById('download');
+                  
+      
+                  modal.style.display = "block";
+      
+      
+                  // When the user clicks on <span> (x), close the modal
+                  span.onclick = function () {
+                    modal.style.display = "none";
+                    img.remove();
+                  }
+                  dwnbtn.onclick = function(){
+                    var download = document.createElement('a');
+                    download.href = img.src;
+                    download.download = 'taxi_visualizer.png';
+                    download.click();
+                  }
+      
+                  // When the user clicks anywhere outside of the modal, close it
+                  window.onclick = function (event) {
+                    if (event.target == modal) {
+                      modal.style.display = "none";
+                      img.remove();
+                    }
+                  }
+                 
+                })
+                .catch(function (error) {
+                  console.error('oops, something went wrong!', error);
+                });
               }
-            }
-           
-          })
-          .catch(function (error) {
-            console.error('oops, something went wrong!', error);
-          });
+        })
+       
          
-
-
-
-        // domtoimage.toJpeg(document.body)
-        // .then(function (dataUrl) {
-        //     var link = document.createElement('a');
-        //     link.download = 'my-image-name.jpeg';
-        //     link.href = dataUrl;
-        //     link.click();
-        // });
         console.log('wrapper div element clicked');
-        // console.log(data);
-        // var link = document.getElementById('take_screenshot');
-
-        // html2canvas(document.querySelector('#map')
-        // ).then(function (canvas) {
-
-        //   link.href = canvas.toDataURL();
-        //   link.download = "example.png";
-        //   console.log(link.download)
-        // });
 
       },
-      dblclick: function () {
-        console.log('wrapper div element dblclicked');
-      },
-      contextmenu: function () {
-        console.log('wrapper div element contextmenu');
 
       },
-    }
+    
   })
     .addTo(map);
 
@@ -451,38 +439,6 @@ $(function () {
     {
       click: function () {
         location.reload();
-      }
-    }
-  }).addTo(map)
-
-  L.control.custom({
-    position: 'topright',
-    content:
-      '<button type="button"  class="btn btn-default btn_camera"><i class="fa fa-map"></i>' +
-      '</button>'
-    ,
-    classes: 'btn-group-vertical btn-group-sm ',
-    title: 'show legend',
-    name: 'click',
-    style:
-    {
-
-      margin: '10px 100',
-      padding: '0px 0 0 0',
-      cursor: 'pointer',
-      width: '35px',
-    },
-    events:
-    {
-      click: function () {
-
-        map.remove()
-
-        map = L.eeGeo.map('map', '944dd0f02f7d5691fe41738b92a4fc4c', {
-          center: [40.875, -74.04166666],
-          zoom: 15
-        });
-
       }
     }
   }).addTo(map)
