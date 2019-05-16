@@ -30,8 +30,10 @@ L.Marker.MovingMarker = L.Marker.extend({
 
         if (durations instanceof Array) {
             this._durations = durations;
+            // this._durationscopy = durations;
         } else {
             this._durations = this._createDurations(this._latlngs, durations);
+            // this._durationscopy = this._createDurations(this._latlngs, durations);
         }
         if (passengers instanceof Array) {
             this._stateColor = passengers;
@@ -49,7 +51,8 @@ L.Marker.MovingMarker = L.Marker.extend({
         this._animRequested  = false;
         this._currentLine    = [];
         this._stations       = {};
-
+        this._durationscopy = [...this._durations];
+        // console.log(this._durationscopy)
         //console.log(passengers)
     },
 
@@ -77,6 +80,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         if (this.isPaused()) {
             this.resume();
         } else {
+            // this._durations = this._durationscopy;
             this._loadLine(0);
             this._startAnimation();
             this.fire('start');
@@ -103,6 +107,31 @@ L.Marker.MovingMarker = L.Marker.extend({
         this._stopAnimation();
         this._updatePosition();
     },
+    speedup: function(speed){
+        for (let index = 0; index < this._durations.length; index++) {
+            this._durations[index] = (this._durations[index]/(speed))*(2**(getBaseLog(2,speed)-1)) 
+        }
+        function getBaseLog(x, y) {
+            return Math.log(y) / Math.log(x);
+          }
+    },
+    speeddown: function(speed){
+        for (let index = 0; index < this._durations.length; index++) {
+            this._durations[index] = (this._durations[index]*(speed))/(2**(getBaseLog(2,speed)-1)) 
+        }
+        function getBaseLog(x, y) {
+            return Math.log(y) / Math.log(x);
+          }
+    }
+    ,
+
+    setInitialDuration: function(){
+        for (let index = 0; index < this._durations.length; index++) {
+            this._durations[index] = this._durationscopy[index];
+            
+        }
+       
+    },
 
     stop: function (elapsedTime) {
         if (this.isEnded()) {
@@ -118,6 +147,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         }
 
         this._state = L.Marker.MovingMarker.endedState;
+        // this._durations = this._durationscopy;
         this.fire('end', { elapsedTime: elapsedTime });
     },
 
@@ -147,6 +177,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         L.Marker.prototype.onAdd.call(this, map);
 
         if (this.options.autostart && (!this.isStarted())) {
+            // this._durations = this._durationscopy;
             this.start();
             return;
         }
@@ -207,6 +238,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         if (this._animRequested) {
             L.Util.cancelAnimFrame(this._animId);
             this._animRequested = false;
+            // this._durations = this._durationscopy;
         }
     },
 
@@ -216,6 +248,7 @@ L.Marker.MovingMarker = L.Marker.extend({
     },
 
     _loadLine: function (index) {
+    
         this._currentIndex    = index;
         this._currentDuration = this._durations[index];
         this._currentColor    = this._stateColor[index];
@@ -291,6 +324,7 @@ L.Marker.MovingMarker = L.Marker.extend({
 
         if (this.isEnded()) {
             // no need to animate
+            // this._durations = this._durationscopy;
             return;
         }
 

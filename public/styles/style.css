@@ -28,7 +28,7 @@ section {
 /* svg:not(:root) { */
 
 svg {
-	margin-inline-start: 115px;
+	margin-inline-start: 240px;
 }
 
 #basemaps-wrapper {
@@ -155,11 +155,8 @@ div.testlegend {
 	height  : 103px;
 }
 
-#play-button {
+.play-button {
 	position     : absolute;
-	top          : 27px;
-	left         : 43px;
-	background   : #f08080;
 	padding-right: 26px;
 	border-radius: 3px;
 	border       : none;
@@ -171,7 +168,30 @@ div.testlegend {
 	height       : 30px;
 }
 
-#play-button:hover {
+#play-button{
+	top          : 27px;
+	left         : 43px;
+	background   : #f08080;
+}
+#forward-button{
+	top       : 27px;
+	left      : 164px;
+	width     : 47px;
+	background: #7e91f5;
+}
+#backward-button{
+	top       : 27px;
+	left      : 110px;
+	width     : 47px;
+	background: #7e91f5;
+}
+#speed_txt{
+	top       : 27px;
+	left      : 218px;
+	width     : 45px;
+	background: #b82e2e;
+}
+#play-button:hover, #forward-button:hover, #backward-button:hover {
 	background-color: #696969;
 }
 
@@ -217,14 +237,14 @@ div.testlegend {
 
 
 .btn_download {
-  background-color: DodgerBlue;
-  border: none;
-  color: white;
-  padding: 12px 30px;
-  cursor: pointer;
-	font-size: 20px;
-	width: 100%;
-	margin-block-start: 3%; 
+  background-color  : DodgerBlue;
+  border            : none;
+  color             : white;
+  padding           : 12px 30px;
+  cursor            : pointer;
+  font-size         : 20px;
+  width             : 100%;
+  margin-block-start: 3%;
 }
 
 /* Darker background on mouse-over */
@@ -235,39 +255,39 @@ div.testlegend {
 
 /* ////////////////////////////////////////////////// */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display         : none;             /* Hidden by default */
+  position        : fixed;            /* Stay in place */
+  z-index         : 1;                /* Sit on top */
+  left            : 0;
+  top             : 0;
+  width           : 100%;             /* Full width */
+  height          : 100%;             /* Full height */
+  overflow        : auto;             /* Enable scroll if needed */
+  background-color: rgb(0,0,0);       /* Fallback color */
+  background-color: rgba(0,0,0,0.4);  /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto; /* 5% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 60%; /* Could be more or less, depending on screen size */
+  margin          : 5% auto;         /* 5% from the top and centered */
+  padding         : 20px;
+  border          : 1px solid #888;
+  width           : 60%;             /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close_ {
-  color: rgb(243, 2, 2);
-  float: right;
-  font-size: 28px;
-	font-weight: bold;
-	opacity: 0.6;
+  color      : rgb(243, 2, 2);
+  float      : right;
+  font-size  : 28px;
+  font-weight: bold;
+  opacity    : 0.6;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color          : black;
   text-decoration: none;
-  cursor: pointer;
+  cursor         : pointer;
 }

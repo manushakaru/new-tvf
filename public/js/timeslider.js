@@ -19,8 +19,13 @@ var svg = d3.select("#vis")
 var moving       = false;
 var currentValue = 0;
 var targetValue  = width;
+var speed = 1;
 
 var playButton = d3.select("#play-button");
+var playButton_ = $("#play-button")
+var forwardButton =  d3.select('#forward-button');
+var backwardButton =  d3.select('#backward-button');
+var speedtxt =  d3.select('#speed_txt');
 
 var x = d3.scaleTime()
   .domain([startDate, endDate])
@@ -41,13 +46,14 @@ slider.append("line")
   .select(function () { return this.parentNode.appendChild(this.cloneNode(true)); })
   .attr("class", "track-overlay")
 
-  .call(d3.drag()
-    .on("start.interrupt", function () { slider.interrupt(); })
-    .on("start drag", function () {
-      currentValue = d3.event.x;
-      update(x.invert(currentValue));
-    })
-  );
+  // .call(d3.drag()
+  //   .on("start.interrupt", function () { slider.interrupt(); })
+  //   .on("start drag", function () {
+  //     currentValue = d3.event.x;
+  //     update(x.invert(currentValue));
+  //   })
+  // )
+  ;
 
 slider.insert("g", ".track-overlay")
   .attr("class", "ticks")
@@ -77,20 +83,43 @@ var label = slider.append("text")
 
 ////////// plot //////////
 
-function play() {
-  var button = d3.select(this);
-  if (button.text() == "Pause") {
-    moving = false;
+forwardButton.on('click',function(){
+  speed *= 2;
+  speedtxt.text('X'+speed)
+  console.log(speed)
+  if(playButton.text() == 'Play'){
+    playButton_.click()
+  }else{
     clearInterval(timer);
-    // timer = 0;
-    button.text("Play");
-  } else {
-    moving = true;
-    timer  = setInterval(step, 3);
-    button.text("Pause");
+  // moving = true;
+  console.log(speed,' at forwardButton')
+  timer  = setInterval(step, 100);
   }
-  console.log("Slider moving: " + moving);
-}
+  for (let index = 0; index < markerarray.length; index++) {
+    markerarray[index].speedup(speed)
+
+  }
+
+});
+backwardButton.on('click',function(){
+  speed /= 2;
+  speedtxt.text('X'+speed)
+  console.log(speed)
+  if(playButton.text() == 'Play'){
+    playButton_.click()
+  }else{
+    clearInterval(timer);
+  // moving = true;
+  console.log(speed,' at forwardButton')
+  timer  = setInterval(step, 100);
+  }
+  for (let index = 0; index < markerarray.length; index++) {
+    markerarray[index].speeddown(speed)
+  }
+
+});
+
+
 playButton
   .on("click", function () {
     var button = d3.select(this);
@@ -109,22 +138,31 @@ playButton
         markerarray[index].start()
 
       }
-      timer = setInterval(step, 3);
+      console.log(speed,' at playbutton')
+      timer = setInterval(step, 100);
 
       button.text("Pause");
     }
     console.log("Slider moving: " + moving);
   })
 
-function step() {
+function step(){
   update(x.invert(currentValue));
-  currentValue = currentValue + (targetValue / 100000);
+    console.log(speed , ' at step')
+    currentValue = currentValue + (targetValue / 3001)*speed;
+
   if (currentValue > targetValue) {
     moving       = false;
     currentValue = 0;
+    speed = 1;
     clearInterval(timer);
+   
     // timer = 0;
     playButton.text("Play");
+    for (let index = 0; index < markerarray.length; index++) {
+      markerarray[index].setInitialDurations()
+
+    }
     console.log("Slider moving: " + moving);
   }
 }
