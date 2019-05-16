@@ -277,13 +277,14 @@ div.testlegend {
 }
 
 /* The Close Button */
-.close_ {
+/* .close {
   color      : rgb(243, 2, 2);
   float      : right;
-  font-size  : 28px;
+  font-size  :40px;
   font-weight: bold;
   opacity    : 0.6;
-}
+  margin-top: -16px;
+} */
 
 .close:hover,
 .close:focus {
@@ -291,3 +292,4 @@ div.testlegend {
   text-decoration: none;
   cursor         : pointer;
 }
+

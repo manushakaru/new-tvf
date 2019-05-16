@@ -2,14 +2,20 @@
   padding-right      : 15px;
   padding-left       : 15px;
   border-radius      : 6px;
-  margin-top         : 100px;
-  margin-inline-start: 194px;
+  margin-top         : 10%;
+  /* margin-inline-start: 194px; */
+  width:70%;
+  height:70%;
+  float: right;
+  position: relative;
+  left: -7%;
 }
 
 body {
   margin : 0px;
   padding: 0;
-  height : 100vh;
+  height : 100%;
+  width: 100%;
 }
 
 #particles-js {
@@ -17,6 +23,22 @@ body {
   background: black;
 }
 
+#logo{
+  float: right;
+  width: 50px;
+  height: 43px;
+  margin: 5px;
+}
+.float_center {
+  float: right;
+  position: relative;
+  left: -34%; /* or right 50% */
+  text-align: left;
+}
+.float_center_{
+  position: relative;
+  left: -53%;
+}
 .csvinp {
   margin-left: 200px;
 }
@@ -32,12 +54,12 @@ body {
 }
 
 .jumbotron h1 {
-  text-align: -webkit-center;
+  text-align: center;
   color     : #ff921f;
 }
 
 .jumbotron p {
-  text-align: -webkit-center;
+  text-align: center;
   color     : rgba(0, 255, 233, 0.92);
 }
 

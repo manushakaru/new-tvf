@@ -378,8 +378,8 @@ $(function () {
                   var span = document.getElementsByClassName("close")[0];
                   var dwnbtn = document.getElementById('download');
                   
-      
-                  modal.style.display = "block";
+                  $("#myModal").fadeToggle()
+                  // modal.style.display = "block";
       
       
                   // When the user clicks on <span> (x), close the modal

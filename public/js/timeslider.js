@@ -22,7 +22,8 @@ var targetValue  = width;
 var speed = 1;
 
 var playButton = d3.select("#play-button");
-var playButton_ = $("#play-button")
+var playButton_ = $("#play-button");
+var backwardButton_ = $("#backward-button")
 var forwardButton =  d3.select('#forward-button');
 var backwardButton =  d3.select('#backward-button');
 var speedtxt =  d3.select('#speed_txt');
@@ -85,6 +86,11 @@ var label = slider.append("text")
 
 forwardButton.on('click',function(){
   speed *= 2;
+  // if(speed >= 2){
+  //   backwardButton_.attr("disabled", false)
+  // }else{
+  //   backwardButton_.attr("disabled", true)
+  // }
   speedtxt.text('X'+speed)
   console.log(speed)
   if(playButton.text() == 'Play'){
