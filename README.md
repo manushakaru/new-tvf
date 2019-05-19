@@ -1,6 +1,7 @@
 <h1 align="center">Taxi Visualizer | <a href="https://uber.github.io/deck.gl">Website</a></h1>
 ====================
 ----------
+
 ## Installation
 
 ```
