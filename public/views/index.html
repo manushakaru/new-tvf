@@ -5,40 +5,97 @@
 <head>
   <title> Taxi Visualizer </title>
   <meta charset="UTF-8">
-  <!-- <meta http-equiv="content-type" content="text/html; charset=UTF-8"> -->
-  <!-- <meta name="description" content="Leaflet plugin to animate marker !"> -->
-  <!-- <meta name="keywords" content="Leaflet MovingMarker marker ewoken github animation"> -->
-  <!-- <meta name="author" content="Ewoken"> -->
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" />
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-  <!-- jQuery library -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <!-- font-awsome library -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Latest compiled JavaScript -->
- 
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
-  <!-- <script src="https://unpkg.com/d3-simple-slider"></script> -->
-  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+
   <!-- linkfor qunit.css -->
   <!-- <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">  -->
 
 </head>
 
-<body>
-  <!-- <section id = 'sec'> -->
+<body onload="loadinp()">
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container ">
+
+      <div class="navbar-header ">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand " href="#"><i class="material-icons" style="font-size:18px">local_taxi</i><span></span>
+          On Demand High Capacity Taxi Data
+          Visualization </a>
+
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <div class="about">About</div>
+          </li>
+          <li>
+            <div class="asterisks"> <a href="https://github.com/manushakaru/new-tvf"><i
+                  class="fa fa-2x fa-github"></i></a></div>
+          </li>
+          <!-- <li><div class = "attribution">Attribution</div></li> -->
+          <li><img src="img/LogoSample_ByTailorBrands(3).jpg" alt="" srcset="" id='logo'></li>
+
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+
+
+    </div>
+  </div>
+
+
+  <div class='popup aboutPopup ' style="display: none">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">About</h3><span class="glyphicon glyphicon-remove"></span>
+      </div>
+      <div class="panel-body">
+        <strong>
+          <p>On demand high capacity taxi data visualization by <a href="#">TAXI VISUALIZER</a></p>
+        </strong>
+
+        <p>This project is based on taxi data visualization. This project is combination of <a
+            href="https://leafletjs.com/">leaflet maps</a> , <a
+            href="https://github.com/ewoken/Leaflet.MovingMarker">leaflet moving marker</a>
+          , <a href="https://github.com/yigityuce/Leaflet.Control.Custom">leaflet custom controller</a> , <a
+            href="https://github.com/tsayen/dom-to-image">dom to image</a> and <a href="https://d3js.org/">d3 js.</a>
+        </p>
+        <p>The intent is to see how/when taxis move around the cities. Especially user can parallelly visualize more
+          taxies with high performances.
+        </p>
+        <p>
+          Upto now, <a href="#">TAXI VISUALIZER</a> required special data format as below for represent the instance of
+          taxi
+        </p>
+        <h1>lattiude, logitude, number of passengers, state ( idle = 0, pickup = 1, dropoff = 2 ) </h1>
+        <p>User can upload file for each taxi, having above format </p>
+        <p><a href="https://github.com/manushakaru/new-tvf">Code on Github</a></p>
+
+      </div>
+    </div>
+  </div>
+
   <div id="map">
   </div>
-  <!-- </section> -->
 
 
   <div id="basemaps-wrapper" class="leaflet-bar">
@@ -69,23 +126,47 @@
     </div>
   </div>
 
-  <!-- <div id="screenshot_div"  class="screenimage">
-      <button class="btn_download"><i class="fa fa-download"></i> Download</button>
-  </div> -->
 
   <!-- The Modal -->
-<div id="myModal" class="modal">
+  <div id="myModal" class="modal">
 
     <!-- Modal content -->
-    <div class="modal-content" id = 'screenshot_div'>
-        <!-- <p>Some text in the Modal..</p> -->
+    <div class="modal-content" id='screenshot_div'>
       <span class="close close_">&times;</span>
-      
-      <!-- <div id="screenshot_div"  class="screenimage"> -->
-          <button id= 'download' class="btn_download"><i class="fa fa-download"></i> Download</button>
-      <!-- </div> -->
+      <button id='download' class="btn_download"><i class="fa fa-download"> </i> Download</button>
+
     </div>
-  
+
+  </div>
+
+
+  <div id="inputfile" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content-input" id='screenshot_div'>
+      <span class="close close_" id='close_inp'>&times;</span>
+
+      <div class='border'>
+        <p class='p_upload'>upload your file here </p>
+
+        <div class="input-container">
+          <input type="file" id="real-input" multiple='' style="display: block">
+          <button class="browse-btn" id='brw-inp'>
+            Browse Files
+          </button>
+          <span class="file-info">Upload a file</span>
+        </div>
+        <!-- <input type="file" id="real-input" multiple='' style='display: block'> -->
+        <!-- <input id="input-b1" name="input-b1" type="file" class="file" data-browse-on-zone-click="true"> -->
+        <div class="uploadBtn">
+          <div class="label" id = 'begin' onclick="upload(event);">Upload</div>
+          <div class="loading"></div>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
   <div id="vis">
@@ -95,10 +176,10 @@
                   <div id="qunit-fixture"></div>
                  </div> -->
     <button id="play-button" class="play-button">Play</button>
-    <button id='backward-button' class="play-button" ><i class="fa fa-backward"></i></button>
+    <button id='backward-button' class="play-button"><i class="fa fa-backward"></i></button>
     <button id='forward-button' class="play-button"><i class="fa fa-forward"></i></button>
     <button id='speed_txt' class="play-button">x1</button>
-  
+
   </div>
 
 
@@ -107,19 +188,46 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-  <script src="https://cdn-webgl.eegeo.com/eegeojs/api/v0.1.780/eegeo.js"></script>
   <script type="text/javascript" src="js/MovingMarker.js"></script>
 
-  <!-- <script type="text/javascript" src="js/taxidata.js"></script> -->
   <script type="text/javascript" src="js/timeslider.js"></script>
-  <script type="text/javascript" src="js/html2canvas.js"></script>
   <script type="text/javascript" src="js/leaflet-color-markers.js"></script>
   <script type="text/javascript" src="js/dom-to-image.min.js"></script>
   <script type="text/javascript" src="js/leaflet-custom-controler.js"></script>
   <!-- <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script> -->
   <!-- <script type="text/javascript" src="js/maptest.js"></script> -->
   <script type="text/javascript" src="js/script.js"></script>
+  <script>
+    var worker = new Worker('js/worker.js');
+    var load_promises = [];
 
+    worker.onmessage = function (e) {
+
+      var dt = e.data
+      for (let index = 0; index < dt.length; index++) {
+        var load_prommise = new Promise(function (resolve, reject) {
+          var markerXX = L.Marker.movingMarker(dt[index][0], 300000, dt[index][1], { autostart: false }).setIcon(blueIcon).setOpacity(0.5).addTo(map);
+          markerarray.push(markerXX)
+          resolve(markerXX)
+        })
+        load_promises.push(load_promises)
+      }
+
+      console.log(markerarray.length); // e.data should be an array of ArrayBuffers.
+    };
+
+    worker.onerror = function (e) {
+      document.querySelector('#error').textContent = [
+        'ERROR: Line ', e.lineno, ' in ', e.filename, ': ', e.message].join('');
+      // console.log(e)
+    };
+
+    document.querySelector('input[type="file"]').addEventListener('change', function (e) {
+      document.getElementsByClassName('uploadBtn')[0].classList.remove('active');
+      worker.postMessage(this.files);
+
+    }, false);
+  </script>
 
 </body>
 

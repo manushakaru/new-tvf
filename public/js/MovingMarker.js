@@ -30,30 +30,25 @@ L.Marker.MovingMarker = L.Marker.extend({
 
         if (durations instanceof Array) {
             this._durations = durations;
-            // this._durationscopy = durations;
         } else {
             this._durations = this._createDurations(this._latlngs, durations);
-            // this._durationscopy = this._createDurations(this._latlngs, durations);
         }
         if (passengers instanceof Array) {
             this._stateColor = passengers;
         }
 
         this._currentDuration = 0;
-        this._currentIndex    = 0;
-        this._currentColor    = 0;
+        this._currentIndex = 0;
+        this._currentColor = 0;
 
-        this._state          = L.Marker.MovingMarker.notStartedState;
-        this._startTime      = 0;
+        this._state = L.Marker.MovingMarker.notStartedState;
+        this._startTime = 0;
         this._startTimeStamp = 0;                                      // timestamp given by requestAnimFrame
         this._pauseStartTime = 0;
-        this._animId         = 0;
-        this._animRequested  = false;
-        this._currentLine    = [];
-        this._stations       = {};
-        this._durationscopy = [...this._durations];
-        // console.log(this._durationscopy)
-        //console.log(passengers)
+        this._animId = 0;
+        this._animRequested = false;
+        this._currentLine = [];
+        this._stations = {};
     },
 
     isRunning: function () {
@@ -80,7 +75,6 @@ L.Marker.MovingMarker = L.Marker.extend({
         if (this.isPaused()) {
             this.resume();
         } else {
-            // this._durations = this._durationscopy;
             this._loadLine(0);
             this._startAnimation();
             this.fire('start');
@@ -107,30 +101,30 @@ L.Marker.MovingMarker = L.Marker.extend({
         this._stopAnimation();
         this._updatePosition();
     },
-    speedup: function(speed){
+    speedup: function (speed) {
         for (let index = 0; index < this._durations.length; index++) {
-            this._durations[index] = (this._durations[index]/(speed))*(2**(getBaseLog(2,speed)-1)) 
+            this._durations[index] = (this._durations[index] / (speed)) * (2 ** (getBaseLog(2, speed) - 1))
         }
         function getBaseLog(x, y) {
             return Math.log(y) / Math.log(x);
-          }
+        }
     },
-    speeddown: function(speed){
+    speeddown: function (speed) {
         for (let index = 0; index < this._durations.length; index++) {
-            this._durations[index] = (this._durations[index]*(speed))/(2**(getBaseLog(2,speed)-1)) 
+            this._durations[index] = (this._durations[index] * (speed)) / (2 ** (getBaseLog(2, speed) - 1))
         }
         function getBaseLog(x, y) {
             return Math.log(y) / Math.log(x);
-          }
+        }
     }
     ,
 
-    setInitialDuration: function(){
+    setInitialDuration: function () {
         for (let index = 0; index < this._durations.length; index++) {
             this._durations[index] = this._durationscopy[index];
-            
+
         }
-       
+
     },
 
     stop: function (elapsedTime) {
@@ -147,7 +141,6 @@ L.Marker.MovingMarker = L.Marker.extend({
         }
 
         this._state = L.Marker.MovingMarker.endedState;
-        // this._durations = this._durationscopy;
         this.fire('end', { elapsedTime: elapsedTime });
     },
 
@@ -158,9 +151,9 @@ L.Marker.MovingMarker = L.Marker.extend({
 
     moveTo: function (latlng, duration) {
         this._stopAnimation();
-        this._latlngs   = [this.getLatLng(), L.latLng(latlng)];
+        this._latlngs = [this.getLatLng(), L.latLng(latlng)];
         this._durations = [duration];
-        this._state     = L.Marker.MovingMarker.notStartedState;
+        this._state = L.Marker.MovingMarker.notStartedState;
         this.start();
         this.options.loop = false;
     },
@@ -193,10 +186,10 @@ L.Marker.MovingMarker = L.Marker.extend({
     },
 
     _createDurations: function (latlngs, duration) {
-        var lastIndex     = latlngs.length - 1;
-        var distances     = [];
+        var lastIndex = latlngs.length - 1;
+        var distances = [];
         var totalDistance = 0;
-        var distance      = 0;
+        var distance = 0;
 
         // compute array of distances between points
         for (var i = 0; i < lastIndex; i++) {
@@ -238,7 +231,6 @@ L.Marker.MovingMarker = L.Marker.extend({
         if (this._animRequested) {
             L.Util.cancelAnimFrame(this._animId);
             this._animRequested = false;
-            // this._durations = this._durationscopy;
         }
     },
 
@@ -248,11 +240,11 @@ L.Marker.MovingMarker = L.Marker.extend({
     },
 
     _loadLine: function (index) {
-    
-        this._currentIndex    = index;
+
+        this._currentIndex = index;
         this._currentDuration = this._durations[index];
-        this._currentColor    = this._stateColor[index];
-        this._currentLine     = this._latlngs.slice(index, index + 2);
+        this._currentColor = this._stateColor[index];
+        this._currentLine = this._latlngs.slice(index, index + 2);
     },
 
     /**
@@ -310,7 +302,7 @@ L.Marker.MovingMarker = L.Marker.extend({
 
         this._loadLine(lineIndex);
         this._startTimeStamp = timestamp - elapsedTime;
-        this._startTime      = Date.now() - elapsedTime;
+        this._startTime = Date.now() - elapsedTime;
         return elapsedTime;
     },
 
@@ -324,7 +316,6 @@ L.Marker.MovingMarker = L.Marker.extend({
 
         if (this.isEnded()) {
             // no need to animate
-            // this._durations = this._durationscopy;
             return;
         }
 
@@ -355,7 +346,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         }
 
         if (!noRequestAnim) {
-            this._animId        = L.Util.requestAnimFrame(this._animate, this, false);
+            this._animId = L.Util.requestAnimFrame(this._animate, this, false);
             this._animRequested = true;
         }
     }

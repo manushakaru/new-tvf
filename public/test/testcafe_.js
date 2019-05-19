@@ -18,20 +18,52 @@ test(`test file upload, button cicks `, async t => {
     await t
         //testing for file uploading
         //testing file location can be changed 
-        .setFilesToUpload(`#filetoupload`, `F:/moving marker/Leaflet.MovingMarker/public/data/taxi-16.txt`)
+        
+        // .click(`#brw-inp`).wait(1000)
+        // .click('#brw-inp')
+        // .wait(1000)
+        .click(`#close_inp`)
         .wait(1000)
+        .click(`#upload_file`)
+        .wait(1000)
+        .click('#brw-inp')
+        .wait(1000)
+        .setFilesToUpload(`#real-input`, `F:/moving marker/Leaflet.MovingMarker/public/data/taxi-10.txt`)
+        .wait(10000)
         //button click event for begin button - redirect to http://localhost:8080/upload
         .click(`#begin`)
-        .wait(1000)
-        //button click event for play button - start the visualization
-        .click(`#play-button`)
         .wait(10000)
-        //button click event for pause button - pause the visualization
-        .click(`#play-button`)
-        .wait(5000)
-        //button click event for play button - start from paused time
-        .click(`#play-button`)
+       
+        .click(`#close_inp`)
         .wait(1000)
+        .click(`#legend_btn`)
+        .wait(1000)
+        .click(`#legend_btn`)
+        .wait(1000)
+        
+    //     .click(`#snap_btn`)
+    //     .wait(20000)
+       
+    //    .click(`#download`)
+    //     .wait(5000)
+    //     .click(`window`)
+    //     .wait(1000)
+
+        // .click('#brw-inp')
+        // .wait(1000)
+        
+
+        //button click event for begin button - redirect to http://localhost:8080/upload
+  
+        //button click event for play button - start the visualization
+        // .click(`#play-button`)
+        // .wait(10000)
+        // //button click event for pause button - pause the visualization
+        // .click(`#play-button`)
+        // .wait(5000)
+        // //button click event for play button - start from paused time
+        // .click(`#play-button`)
+        // .wait(1000)
         //click to select basemap 
         .click(citySelect)
         .wait(1000)
@@ -97,11 +129,11 @@ test(`test file upload, button cicks `, async t => {
         .click('a.leaflet-control-zoom-out')
         .wait(2000)
         //test for legend open
-        .click('.domcontainer')
-        .wait(2000)
-        //test for legend close
-        .click('.domcontainer')
-        .wait(2000)
+        // .click('.domcontainer')
+        // .wait(2000)
+        // //test for legend close
+        // .click('.domcontainer')
+        // .wait(2000)
 
         ;
 });

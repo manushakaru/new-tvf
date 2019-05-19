@@ -99,7 +99,7 @@ forwardButton.on('click',function(){
     clearInterval(timer);
   // moving = true;
   console.log(speed,' at forwardButton')
-  timer  = setInterval(step, 100);
+  timer  = setInterval(step, 10);
   }
   for (let index = 0; index < markerarray.length; index++) {
     markerarray[index].speedup(speed)
@@ -117,7 +117,7 @@ backwardButton.on('click',function(){
     clearInterval(timer);
   // moving = true;
   console.log(speed,' at forwardButton')
-  timer  = setInterval(step, 100);
+  timer  = setInterval(step, 10);
   }
   for (let index = 0; index < markerarray.length; index++) {
     markerarray[index].speeddown(speed)
@@ -128,6 +128,9 @@ backwardButton.on('click',function(){
 
 playButton
   .on("click", function () {
+    if(markerarray && markerarray.length){
+
+    
     var button = d3.select(this);
     if (button.text() == "Pause") {
       for (let index = 0; index < markerarray.length; index++) {
@@ -145,22 +148,25 @@ playButton
 
       }
       console.log(speed,' at playbutton')
-      timer = setInterval(step, 100);
+      timer = setInterval(step, 10);
 
       button.text("Pause");
     }
     console.log("Slider moving: " + moving);
+  }else{
+    loadinp()
+  }
   })
 
 function step(){
   update(x.invert(currentValue));
     console.log(speed , ' at step')
-    currentValue = currentValue + (targetValue / 3001)*speed;
+    currentValue = currentValue + (targetValue / 30001)*speed;
 
   if (currentValue > targetValue) {
     moving       = false;
     currentValue = 0;
-    speed = 1;
+    // speed = 1;
     clearInterval(timer);
    
     // timer = 0;
