@@ -288,13 +288,20 @@ div.testlegend {
 
 .modal-content-input {
 	background-color: #fefefe;
-	margin: 10% auto;
-	/* 5% from the top and centered */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 50%;
-	/* Could be more or less, depending on screen size */
-	height: 50%;
+    margin: 10% auto;
+    padding: 6px;
+    border: 1px solid #888;
+    width: 50%;
+    height: 45%;
+    border-radius: 6px;
+}
+.close{
+	padding-right: 7px;
+    padding-top: 1px;
+	opacity: 0.5;
+	font-size: 25px;
+	margin-bottom: 27px;
+    font-weight: 1000;
 }
 
 .close:hover, .close:focus {
@@ -355,10 +362,9 @@ input[type='file'] {
 
 .uploadBtn {
 	position: absolute;
-	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 200px;
+	width: 22%;
 	height: 45px;
 	cursor: pointer;
 	text-align: center;
@@ -422,16 +428,26 @@ input[type='file'] {
 }
 
 .p_upload {
-	margin: 24px 82px 10px;
-	margin: 2em auto;
+	text-align: center;
+    color: #00714b;
+    /* border: 1px solid; */
+	font-size: 20px;
+	font-family: Arial;
+	font-weight: bolder;
+	padding:3px;
+	margin-bottom: -31px;
+	background-color: bisque;    
+}
+.p_upload_ {
 	text-align: center;
 	color: #00714b;
-	border: 1px solid;
-	font-size: 20px;
-	font-style: italic;
+	font-family: Arial;
+    /* border: 1px solid; */
+    font-size: 20px;
 	font-weight: bolder;
+	padding:3px;
+	background-color: bisque;    
 }
-
 .navbar-brand {
 	margin-bottom: 10px;
 }
@@ -518,3 +534,6 @@ li>div:hover {
 	margin-left: 10%;
 	display: none;
 }
+
+
+ 

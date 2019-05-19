@@ -131,8 +131,11 @@
   <div id="myModal" class="modal">
 
     <!-- Modal content -->
+    
     <div class="modal-content" id='screenshot_div'>
+        <p class='p_upload'>DOWNLOAD SCREEN IMAGE </p>
       <span class="close close_">&times;</span>
+      <!-- <p class='p_upload'>UPLOAD FILES </p> -->
       <button id='download' class="btn_download"><i class="fa fa-download"> </i> Download</button>
 
     </div>
@@ -147,22 +150,23 @@
       <span class="close close_" id='close_inp'>&times;</span>
 
       <div class='border'>
-        <p class='p_upload'>upload your file here </p>
+        <p class='p_upload_'>UPLOAD FILES </p>
 
         <div class="input-container">
-          <input type="file" id="real-input" multiple='' style="display: block">
+          <input type="file" id="real-input" multiple='' style="display: none">
           <button class="browse-btn" id='brw-inp'>
             Browse Files
           </button>
           <span class="file-info">Upload a file</span>
+          <div class="uploadBtn">
+            <div class="label" id = 'begin' onclick="upload(event);">Upload</div>
+            <div class="loading"></div>
+          </div>
+  
         </div>
         <!-- <input type="file" id="real-input" multiple='' style='display: block'> -->
         <!-- <input id="input-b1" name="input-b1" type="file" class="file" data-browse-on-zone-click="true"> -->
-        <div class="uploadBtn">
-          <div class="label" id = 'begin' onclick="upload(event);">Upload</div>
-          <div class="loading"></div>
-        </div>
-
+        
       </div>
 
     </div>
@@ -197,6 +201,7 @@
   <!-- <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script> -->
   <!-- <script type="text/javascript" src="js/maptest.js"></script> -->
   <script type="text/javascript" src="js/script.js"></script>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <script>
     var worker = new Worker('js/worker.js');
     var load_promises = [];
@@ -228,7 +233,11 @@
 
     }, false);
   </script>
-
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
 </body>
 
 

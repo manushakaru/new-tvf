@@ -146,11 +146,11 @@ $(function () {
   L.control.custom({
     position: 'topleft',
     content:
-      '<button type="button" id = "legend_btn" class="btn btn-default btn_camera"><i class="fa-lg fa fa-map"></i>' +
+      '<button type="button" id = "legend_btn" class="btn btn-default btn_camera" data-toggle="tooltip" data-placement="right" title ="Legend" ><i class="fa-lg fa fa-map"></i>' +
       '</button>'
     ,
     classes: 'btn-group-vertical btn-group-sm ',
-    title: 'show legend',
+    // title: 'show legend',
     name: 'click',
     style:
     {
@@ -181,7 +181,7 @@ $(function () {
   L.control.custom({
     position: 'topleft',
     content:
-      '<button type="button" id = "upload_file"  class="btn btn-default btn_camera"><i class=" fa-lg fa fa-upload" ></i>' +
+      '<button type="button" id = "upload_file"  class="btn btn-default btn_camera" data-toggle="tooltip" data-placement="right" title ="File_Upload"><i class=" fa-lg fa fa-upload" ></i>' +
       '</button>'
     ,
     classes: 'btn-group-vertical btn-group-sm ',
@@ -221,7 +221,7 @@ $(function () {
 
   L.control.custom({
     position: 'topleft',
-    content: '<button type="button" id = "snap_btn" class="btn btn-default btn_camera">' +
+    content: '<button type="button" id = "snap_btn" class="btn btn-default btn_camera" data-toggle="tooltip" data-placement="right" title ="Screenshot">' +
       '    <a id ="take_screenshot" ><i class="fa-lg fa fa-camera"></i></a>' +
       '</button>'
     ,
@@ -312,7 +312,7 @@ $(function () {
   L.control.custom({
     position: 'topleft',
     content:
-      '<button type="button" id = "reload_btn" class="btn btn-default btn_camera"> <i class="fa fa-lg fa-refresh" aria-hidden="true"></i>' +
+      '<button type="button" id = "reload_btn" class="btn btn-default btn_camera" data-toggle="tooltip" data-placement="right" title ="Reload"> <i class="fa fa-lg fa-refresh" aria-hidden="true"></i>' +
       '</button>'
     ,
     classes: 'btn-group-vertical btn-group-sm ',
