@@ -7,7 +7,7 @@
 ```
 npm install taxi_visualizer
 ```
-
+index.js
 ```js
 var taxiVisualizer = require('taxi_viusalizer');
 taxiVisualizer.initialize();
