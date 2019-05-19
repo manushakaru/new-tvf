@@ -2,18 +2,18 @@
   <a href="https://www.npmjs.com/package/taxi_visualizer">
     <img src="https://img.shields.io/badge/npm-v1.0.2-blue.svg" alt="version" />
   </a>
-  <a href="https://github.com/manushakaru/new-tvf">
+  <a href="https://github.com/manushakaru/new-tvf/blob/master/package.json">
     <img src="https://img.shields.io/badge/dependencies-up%20to%20date%20-brightgreen.svg" alt="dependencies" />
   </a>
    <a href="https://github.com/manushakaru/new-tvf">
-    <img src="https://img.shields.io/badge/size-83.3%20MB-success.svg" alt="size" />
+   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/manushakaru/new-tvf.svg">
   </a>
    </a>
    <a href="https://nodejs.org/en/">
     <img src="https://img.shields.io/badge/node%20-v10.15.0-green.svg" alt="node" />
   </a>
  
-  <a href="https://github.com/manushakaru/new-tvf">
+  <a href="https://github.com/manushakaru/new-tvf/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-informational.svg" alt="license" />
   </a> 
   <a href="https://github.com/manushakaru/new-tvf">
