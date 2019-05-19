@@ -1,6 +1,6 @@
 <p align="right">
   <a href="https://www.npmjs.com/package/taxi_visualizer">
-    <img src="https://img.shields.io/badge/npm-v1.0.2-blue.svg" alt="version" />
+    <img src="https://img.shields.io/badge/npm-v1.0.3-blue.svg" alt="version" />
   </a>
   <a href="https://github.com/manushakaru/new-tvf/blob/master/package.json">
     <img src="https://img.shields.io/badge/dependencies-up%20to%20date%20-brightgreen.svg" alt="dependencies" />
