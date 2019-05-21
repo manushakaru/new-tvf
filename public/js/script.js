@@ -278,10 +278,12 @@ $(function () {
                   img.remove();
                 }
                 dwnbtn.onclick = function () {
-                  var download = document.createElement('a');
-                  download.href = img.src;
-                  download.download = 'taxi_visualizer.png';
-                  download.click();
+                  var link = document.createElement('a');
+                  link.href = img.src;
+                  link.download = 'taxi_visualizer.png';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
                 }
 
                 // When the user clicks anywhere outside of the modal, close it
