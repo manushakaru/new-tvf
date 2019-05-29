@@ -1,0 +1,251 @@
+{
+  "Name": "test1",
+  "CreationDate": "2019-5-28",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "http://localhost:8080/",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=upload_file",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=brw-inp",
+      "Value": ""
+    },
+    {
+      "Command": "XClick",
+      "Target": "id=real-input",
+      "Value": ""
+    },
+    {
+      "Command": "XType",
+      "Target": "taxi-14.txt",
+      "Value": ""
+    },
+    {
+      "Command": "XType",
+      "Target": " ${KEY_ENTER}",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=begin",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=close_inp",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=play-button",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=play-button",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=forward-button",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=play-button",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=forward-button",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=backward-button",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=play-button",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "select",
+      "Target": "id=basemaps",
+      "Value": "label=light_all"
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "select",
+      "Target": "id=basemaps",
+      "Value": "label=light_nolabels"
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "select",
+      "Target": "id=basemaps",
+      "Value": "label=dark_nolabels"
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "select",
+      "Target": "id=basemaps",
+      "Value": "label=base-antique"
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "select",
+      "Target": "id=basemaps",
+      "Value": "label=base-eco"
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "select",
+      "Target": "id=basemaps",
+      "Value": "label=base-midnight"
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"legend_btn\"]/i",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"legend_btn\"]/i",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "select",
+      "Target": "id=basemaps",
+      "Value": "label=dark_all"
+    },
+    {
+      "Command": "click",
+      "Target": "id=basemaps",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "link=+",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "link=+",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "link=+",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "link=-",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "link=-",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "link=-",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"take_screenshot\"]/i",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=download",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"screenshot_div\"]/span",
+      "Value": ""
+    },
+    {
+      "Command": "clickAndWait",
+      "Target": "xpath=//*[@id=\"reload_btn\"]/i",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=upload_file",
+      "Value": ""
+    }
+  ]
+}

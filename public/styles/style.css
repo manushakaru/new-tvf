@@ -30,7 +30,7 @@ section {
 }
 
 svg {
-	margin-inline-start: 240px;
+	margin-inline-start: 250px;
 }
 
 button>i {
@@ -185,7 +185,8 @@ div.testlegend {
 #speed_txt {
 	top: 27px;
 	left: 218px;
-	width: 45px;
+	text-align: center;
+	display: inline-block;
 	background: #b82e2e;
 }
 
@@ -288,20 +289,21 @@ div.testlegend {
 
 .modal-content-input {
 	background-color: #fefefe;
-    margin: 10% auto;
-    padding: 6px;
-    border: 1px solid #888;
-    width: 50%;
-    height: 45%;
-    border-radius: 6px;
+	margin: 10% auto;
+	padding: 6px;
+	border: 1px solid #888;
+	width: 50%;
+	height: 45%;
+	border-radius: 6px;
 }
-.close{
+
+.close {
 	padding-right: 7px;
-    padding-top: 1px;
+	padding-top: 1px;
 	opacity: 0.5;
 	font-size: 25px;
 	margin-bottom: 27px;
-    font-weight: 1000;
+	font-weight: 1000;
 }
 
 .close:hover, .close:focus {
@@ -358,7 +360,6 @@ input[type='file'] {
 		margin: 10px 5px;
 	}
 }
-
 
 .uploadBtn {
 	position: absolute;
@@ -429,25 +430,27 @@ input[type='file'] {
 
 .p_upload {
 	text-align: center;
-    color: #00714b;
-    /* border: 1px solid; */
+	color: #00714b;
+	/* border: 1px solid; */
 	font-size: 20px;
 	font-family: Arial;
 	font-weight: bolder;
-	padding:3px;
+	padding: 3px;
 	margin-bottom: -31px;
-	background-color: bisque;    
+	background-color: bisque;
 }
+
 .p_upload_ {
 	text-align: center;
 	color: #00714b;
 	font-family: Arial;
-    /* border: 1px solid; */
-    font-size: 20px;
+	/* border: 1px solid; */
+	font-size: 20px;
 	font-weight: bolder;
-	padding:3px;
-	background-color: bisque;    
+	padding: 3px;
+	background-color: bisque;
 }
+
 .navbar-brand {
 	margin-bottom: 10px;
 }
@@ -535,5 +538,15 @@ li>div:hover {
 	display: none;
 }
 
-
- 
+.dateTimeBox {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    top: 83%;
+    left: 88%;
+    color: #7fc3ff;
+    font-size: 26px;
+}
+.time{
+	font-size: 20px;
+}

@@ -14,10 +14,10 @@
         },
         container: null,
         onAdd: function (map) {
-            this.container           = L.DomUtil.create('div');
-            this.container.id        = this.options.id;
-            this.container.name      = this.options.name;
-            this.container.title     = this.options.title;
+            this.container = L.DomUtil.create('div');
+            this.container.id = this.options.id;
+            this.container.name = this.options.name;
+            this.container.title = this.options.title;
             this.container.className = this.options.classes;
             this.container.innerHTML = this.options.content;
 

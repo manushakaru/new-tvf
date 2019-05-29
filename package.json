@@ -1,6 +1,6 @@
 {
   "name": "taxi_visualizer",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "This project is free and opensorcce project which can visualise taxi routing data in simultaniously. This will allow user to input thier data files and see how/when taxis move around the cities",
   "main": "server.js",
   "start": "node server.js",

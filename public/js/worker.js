@@ -9,20 +9,19 @@ self.addEventListener('message', function (e) {
 
   var buffers = [];
 
-
   // Read each file synchronously as an ArrayBuffer and
   // stash it in a global array to return to the main app.
   [].forEach.call(files, function (file) {
     var markerarray = [];
-    var reader = new FileReaderSync();
-    var readdata = reader.readAsText(file);
-    var datalist = readdata.split('\n');
-    var latlon = [],
-      passenger = [],
-      state = [];
+    var reader      = new FileReaderSync();
+    var readdata    = reader.readAsText(file);
+    var datalist    = readdata.split('\n');
+    var latlon      = [],
+        passenger   = [],
+        state       = [];
 
     for (let line_num = 0; line_num < datalist.length; line_num++) {
-      var arr = datalist[line_num].split(',');
+      var    arr       = datalist[line_num].split(',');
       latlon[line_num] = [parseFloat(arr[0]), parseFloat(arr[1])];
       passenger.push(parseInt(arr[2]));
       state.push(parseInt(arr[3]));

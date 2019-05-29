@@ -116,7 +116,7 @@
       <img src="img/1024px-Light_Blue_Circle.svg.png" class="icon-img">
       <p class="icon" id='1'>0 passengers</p>
       <img src="img/79-796559_green-fake-bullet-green-circle-transparent-png.png" class="icon-img">
-      <p class="icon" id='1'>1 passengers</p>
+      <p class="icon" id='1'>1 passenger</p>
       <img src="img/yellow.png" class="icon-img">
       <p class="icon" id='1'>2 passengers</p>
       <img src="img/glossy-green.png" class="icon-img">
@@ -131,9 +131,9 @@
   <div id="myModal" class="modal">
 
     <!-- Modal content -->
-    
+
     <div class="modal-content" id='screenshot_div'>
-        <p class='p_upload'>DOWNLOAD SCREEN IMAGE </p>
+      <p class='p_upload'>DOWNLOAD SCREEN IMAGE </p>
       <span class="close close_">&times;</span>
       <!-- <p class='p_upload'>UPLOAD FILES </p> -->
       <button id='download' class="btn_download"><i class="fa fa-download"> </i> Download</button>
@@ -159,14 +159,14 @@
           </button>
           <span class="file-info">Upload a file</span>
           <div class="uploadBtn">
-            <div class="label" id = 'begin' onclick="upload(event);">Upload</div>
+            <div class="label" id='begin' onclick="upload(event);">Upload</div>
             <div class="loading"></div>
           </div>
-  
+
         </div>
         <!-- <input type="file" id="real-input" multiple='' style='display: block'> -->
         <!-- <input id="input-b1" name="input-b1" type="file" class="file" data-browse-on-zone-click="true"> -->
-        
+
       </div>
 
     </div>
@@ -185,7 +185,11 @@
     <button id='speed_txt' class="play-button">x1</button>
 
   </div>
-
+  <div class="dateTimeBox  box">
+    <div class = "time">Time :</div> 
+    <div ><span class="glyphicon glyphicon-time"></span> <span class = "readableTime"></span></div> 
+    
+</div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
@@ -233,11 +237,11 @@
 
     }, false);
   </script>
-<script>
-    $(document).ready(function(){
+  <script>
+    $(document).ready(function () {
       $('[data-toggle="tooltip"]').tooltip();
     });
-    </script>
+  </script>
 </body>
 
 

@@ -171,10 +171,10 @@ function step(){
    
     // timer = 0;
     playButton.text("Play");
-    for (let index = 0; index < markerarray.length; index++) {
-      markerarray[index].setInitialDurations()
+    // for (let index = 0; index < markerarray.length; index++) {
+    //   // markerarray[index].setInitialDurations()
 
-    }
+    // }
     console.log("Slider moving: " + moving);
   }
 }
@@ -185,5 +185,6 @@ function update(h) {
   label
     .attr("x", x(h))
     .text(formatDate(h));
+    $('.readableTime').text(formatDate(h));
 }
 d3.selectAll("text").style("fill", "white");

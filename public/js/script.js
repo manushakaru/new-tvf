@@ -3,17 +3,39 @@ const uploadButton = document.querySelector('.browse-btn');
 const fileInfo = document.querySelector('.file-info');
 const realInput = document.getElementById('real-input');
 
+
+
 uploadButton.addEventListener('click', (e) => {
+  // if(markerarray && markerarray.length){
+  //   for (let index = 0; index < markerarray.length; index++) {
+  //     map.removeLayer( markerarray[index])
+  //   //  markerarray[index].onRemove();
+  //   }
+  //   markerarray.length = 0
+  // }
   realInput.click();
 });
 
 realInput.addEventListener('change', () => {
+ 
+
+  rfile = $('#real-input')
+  if(realInput.files.length>1){
+    console.log('file count')
+    console.log(realInput.files.length)
+    fileInfo.innerHTML = realInput.files.length + ' files ';
+  }
+  else{
+    console.log( realInput.value.split(/\\|\//))
   const name = realInput.value.split(/\\|\//).pop();
   const truncated = name.length > 20
     ? name.substr(name.length - 20)
     : name;
 
   fileInfo.innerHTML = truncated;
+  }
+  // fileCount = this.files.length;
+  
 });
 
 //load file input when loading page
@@ -26,6 +48,8 @@ function upload(e) {
   if (markerarray.length == load_promises.length && markerarray.length != 0) {
     Promise.all(load_promises).then(function (result) {
       console.log(result)
+      console.log( e.target.parentNode.style.transition)
+      // e.target.parentNode.classList.transition('width 40000ms ease-in-out 500ms, color 2000ms ease 48000ms');
       e.target.parentNode.classList.toggle('active');
     })
   }
@@ -60,12 +84,12 @@ map.fitBounds([
   [40.66666666, -73.875]
 ]);
 
-function setZoomPosition () {
+function setZoomPosition() {
   var mapHalfHeight = map.getSize().y / 2,
-      container = map.zoomControl.getContainer(),
-      containerHalfHeight = parseInt(container.offsetHeight / 2),
-      containerTop = mapHalfHeight - containerHalfHeight + 'px';
-  
+    container = map.zoomControl.getContainer(),
+    containerHalfHeight = parseInt(container.offsetHeight / 2),
+    containerTop = mapHalfHeight - containerHalfHeight + 'px';
+
   container.style.position = 'absolute';
   container.style.top = '60px';
 }
@@ -159,7 +183,7 @@ $(function () {
       padding: '0px 0 0 0',
       cursor: 'pointer',
       width: '35px',
-      top:'140px',
+      top: '140px',
     },
     events:
     {
@@ -193,7 +217,7 @@ $(function () {
       padding: '0px 0 0 0',
       cursor: 'pointer',
       width: '35px',
-      top:'140px',
+      top: '140px',
     },
     events:
     {
@@ -205,12 +229,12 @@ $(function () {
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
           modal_input.style.display = "none";
-         
+
         }
         window.onclick = function (event) {
           if (event.target == modal_input) {
             modal_input.style.display = "none";
-        
+
           }
         }
 
@@ -226,7 +250,7 @@ $(function () {
       '</button>'
     ,
     classes: 'btn-group-vertical btn-group-sm ',
-    title: 'screendhot',
+    title: 'screenshot',
     style:
     {
 
@@ -234,7 +258,7 @@ $(function () {
       padding: '0px 0 0 0',
       cursor: 'pointer',
       width: '35px',
-      top:'140px',
+      top: '140px',
     },
     events:
     {
@@ -326,7 +350,7 @@ $(function () {
       padding: '0px 0 0 0',
       cursor: 'pointer',
       width: '35px',
-      top:'140px',
+      top: '140px',
     },
     events:
     {
@@ -338,10 +362,10 @@ $(function () {
 
 })
 
-$('.about').click(function(){
+$('.about').click(function () {
   $('.aboutPopup').fadeIn();
 });
 
-$('.aboutPopup .panel-heading>.glyphicon').click(function(){
+$('.aboutPopup .panel-heading>.glyphicon').click(function () {
   $('.aboutPopup').fadeOut();
 });

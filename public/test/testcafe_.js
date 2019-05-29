@@ -29,10 +29,10 @@ test(`test file upload, button cicks `, async t => {
         .click('#brw-inp')
         .wait(1000)
         .setFilesToUpload(`#real-input`, `F:/moving marker/Leaflet.MovingMarker/public/data/taxi-10.txt`)
-        .wait(10000)
+        .wait(1000)
         //button click event for begin button - redirect to http://localhost:8080/upload
         .click(`#begin`)
-        .wait(10000)
+        .wait(1000)
        
         .click(`#close_inp`)
         .wait(1000)
@@ -41,8 +41,8 @@ test(`test file upload, button cicks `, async t => {
         .click(`#legend_btn`)
         .wait(1000)
         
-    //     .click(`#snap_btn`)
-    //     .wait(20000)
+        .click(`#snap_btn`)
+        .wait(1000)
        
     //    .click(`#download`)
     //     .wait(5000)

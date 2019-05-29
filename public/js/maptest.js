@@ -2,7 +2,7 @@
 QUnit.test("map default options", function (assert) {
         assert.equal(map.getCenter().toString(),
                 "LatLng(40.77091, -73.95833)",
-                "The map is centered at the ZMT's longitude, and the equator"
+                "The map is centered "
         );
         assert.equal(map.getZoom(),
                 12,
